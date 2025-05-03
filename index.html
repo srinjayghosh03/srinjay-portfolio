@@ -9,9 +9,20 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+            line-height: 1.6;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
         }
         nav {
-            background-color: #333;
+            background-color: #444;
             padding: 1rem;
         }
         nav ul {
@@ -22,34 +33,68 @@
             justify-content: center;
         }
         nav ul li {
-            margin: 0 1rem;
+            margin: 0 1.5rem;
         }
         nav ul li a {
             color: white;
             text-decoration: none;
             font-weight: bold;
+            font-size: 1.1rem;
         }
         nav ul li a:hover {
             color: #ddd;
         }
-        .container {
-            padding: 2rem;
+        .about-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            text-align: left;
+        }
+        .about-container h2 {
             text-align: center;
+            color: #333;
+            font-size: 2rem;
+        }
+        .about-container p {
+            margin: 1rem 0;
+            color: #555;
+            font-size: 1.1rem;
+        }
+        .skills {
+            margin-top: 1rem;
+        }
+        .skills h3 {
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+        .skills ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .skills ul li {
+            background-color: #f0f0f0;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            font-size: 0.9rem;
         }
     </style>
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="resume.pdf" target="_blank">Resume</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
-    <div class="container">
-        <h1>Welcome to My Portfolio</h1>
+    <header>
+        <h1>Srinjay Ghosh</h1>
+        <nav>
+            <ul>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="photography.html">Photography</a></li>
+                <li><a href="resume.pdf" target="_blank">Resume</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="about-container">
+        <h2>About Me</h2>
         <p>Srinjay Ghosh - Developer, Filmmaker, and Explorer
 
 Hello, I'm Srinjay Ghosh, a passionate programmer, filmmaker, and an avid traveler with an ever-growing curiosity about the world around me. Hailing from Bengal, I am currently in my third year of B.Tech at KIIT University, where I’m combining my love for technology and creativity to shape my future.
@@ -82,5 +127,23 @@ What’s Next?
 I’m continuously working on growing as both a developer and a filmmaker. I have big plans to build a colorful, dynamic portfolio showcasing my work and achievements. The combination of coding, creativity, and travel not only defines who I am but also how I approach life—always seeking new opportunities to learn, grow, and explore.
 
 I hope my journey inspires you to find your own passions and pursue them with dedication and enthusiasm. Feel free to explore my work and join me in this exciting adventure of creation, innovation, and discovery.
+
+</p>
+        <div class="skills">
+            <h3>Skills</h3>
+            <ul>
+                <li>Python</li>
+                <li>Java</li>
+                <li>JavaScript</li>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>React</li>
+                <li>Git</li>
+                <li>Video Editing</li>
+                <li>Photography</li>
+            </ul>
+        </div>
+    </div>
 </body>
 </html>
+
