@@ -1,36 +1,67 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Srinjay Ghosh | Portfolio</title>
+  <title>Srinjay Ghosh Portfolio</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    h1 {
+      color: #2c3e50;
+    }
+    a.resume-button {
+      display: inline-block;
+      background: #3498db;
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 8px;
+      margin-top: 10px;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 40px;
+    }
+    .gallery img {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+  </style>
 </head>
 <body>
-  <header class="hero">
-    <div class="container">
-      <h1>Hello, I'm <span>Srinjay Ghosh</span></h1>
-      <p>Photographer | Filmmaker | Web Developer</p>
-    </div>
+  <header>
+    <h1>Srinjay Ghosh</h1>
+    <p>Photographer | Filmmaker | Developer</p>
+    <a class="resume-button" href="FINALRESUME.pdf" target="_blank">View Resume</a>
   </header>
 
   <section class="gallery">
-    <h2>My Photography</h2>
-    <div class="grid">
-      <img src="images/photo1.jpg" alt="Sample 1" />
-      <img src="images/photo2.jpg" alt="Sample 2" />
-      <img src="images/photo3.jpg" alt="Sample 3" />
-    </div>
+    <img src="images/3.png" alt="Click 1">
+    <img src="images/Screenshot 2025-05-02 235835.png" alt="Click 2">
+    <img src="images/Screenshot 2025-05-02 235913.png" alt="Click 3">
+    <img src="images/Screenshot 2025-05-03 000016.png" alt="Click 4">
+    <img src="images/Screenshot 2025-05-03 000047.png" alt="Click 5">
+    <img src="images/Screenshot 2025-05-03 000104.png" alt="Click 6">
+    <img src="images/Screenshot 2025-05-03 000140.png" alt="Click 7">
+    <img src="images/Screenshot 2025-05-03 000205.png" alt="Click 8">
+    <img src="images/Screenshot 2025-05-03 000226.png" alt="Click 9">
+    <img src="images/Screenshot 2025-05-03 000244.png" alt="Click 10">
+    <img src="images/Screenshot 2025-05-03 000312.png" alt="Click 11">
+    <img src="images/Screenshot 2025-05-03 000337.png" alt="Click 12">
+    <img src="images/Screenshot 2025-05-03 000357.png" alt="Click 13">
   </section>
-
-  <section class="resume">
-    <h2>My Resume</h2>
-    <a href="FINALRESUME.pdf" class="btn" download>Download Resume</a>
-  </section>
-
-  <footer>
-    <p>© 2025 Srinjay Ghosh | All rights reserved.</p>
-  </footer>
 </body>
 </html>
