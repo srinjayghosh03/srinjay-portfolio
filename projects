@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Srinjay's Portfolio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+        }
+        nav {
+            background-color: #333;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+        nav ul li {
+            margin: 0 1.5rem;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        nav ul li a:hover {
+            color: #ddd;
+        }
+        .projects-container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        .projects-container h1 {
+            text-align: center;
+            color: #333;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+        .project {
+            background-color: white;
+            margin: 1.5rem 0;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+        .project:hover {
+            transform: translateY(-5px);
+        }
+        .project h2 {
+            margin: 0 0 0.5rem;
+            color: #333;
+            font-size: 1.8rem;
+        }
+        .project p {
+            margin: 0 0 1rem;
+            color: #555;
+            font-size: 1.1rem;
+        }
+        .project .links a {
+            color: #0066cc;
+            text-decoration: none;
+            font-weight: bold;
+            margin-right: 1rem;
+        }
+        .project .links a:hover {
+            text-decoration: underline;
+        }
+        .project .tech-stack {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: #777;
+        }
+        .project .tech-stack span {
+            background-color: #e0e0e0;
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            margin-right: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="photography.html">Photography</a></li>
+            <li><a href="resume.pdf" target="_blank">Resume</a></li>
+        </ul>
+    </nav>
+    <div class="projects-container">
+        <h1>My Projects</h1>
+        <div class="project">
+            <h2>Personal Portfolio Website</h2>
+            <p>A dynamic, responsive portfolio website showcasing my skills in web development. Features smooth animations, a user-friendly interface, and cross-device compatibility.</p>
+            <div class="links">
+                <a href="https://srinjayghosh03.github.io/srinjay-portfolio/" target="_blank">Live Demo</a>
+                <a href="https://github.com/srinjayghosh03/srinjay-portfolio" target="_blank">GitHub</a>
+            </div>
+            <div class="tech-stack">
+                <span>HTML</span>
+                <span>CSS</span>
+                <span>JavaScript</span>
+            </div>
+        </div>
+        <div class="project">
+            <h2>Data Visualization Tool</h2>
+            <p>A Python-based tool for analyzing large datasets, creating interactive graphs and charts. Designed for user-friendly data exploration and visualization.</p>
+            <div class="links">
+                <a href="https://github.com/srinjayghosh03/data-viz-tool" target="_blank">GitHub</a>
+            </div>
+            <div class="tech-stack">
+                <span>Python</span>
+                <span>Matplotlib</span>
+                <span>Plotly</span>
+            </div>
+        </div>
+        <div class="project">
+            <h2>Social Media Campaign Management</h2>
+            <p>Managed content creation and scheduling for KIIT University's digital platforms. Utilized Google Analytics to optimize engagement, increasing outreach by 20%.</p>
+            <div class="tech-stack">
+                <span>Google Analytics</span>
+                <span>Content Management</span>
+            </div>
+        </div>
+        <!-- Add more projects here -->
+        <!--
+        <div class="project">
+            <h2>Your Project Title</h2>
+            <p>Your project description here.</p>
+            <div class="links">
+                <a href="your-live-demo-link" target="_blank">Live Demo</a>
+                <a href="your-github-link" target="_blank">GitHub</a>
+            </div>
+            <div class="tech-stack">
+                <span>Tech1</span>
+                <span>Tech2</span>
+            </div>
+        </div>
+        -->
+    </div>
+</body>
+</html>
