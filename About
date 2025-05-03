@@ -10,6 +10,7 @@
             margin: 0;
             padding: 0;
             line-height: 1.6;
+            background-color: #f9f9f9;
         }
         nav {
             background-color: #333;
@@ -41,23 +42,34 @@
             max-width: 800px;
             margin: 2rem auto;
             padding: 0 1rem;
-            text-align: left;
+            text-align: center;
         }
         .about-container h1 {
-            text-align: center;
             color: #333;
-            font-size: 2rem;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 1rem auto;
+            display: block;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
         .about-container p {
             margin: 1rem 0;
             color: #555;
             font-size: 1.1rem;
+            text-align: left;
         }
         .skills {
-            margin-top: 1rem;
+            margin-top: 2rem;
         }
         .skills h2 {
             color: #333;
+            font-size: 1.8rem;
             margin-bottom: 0.5rem;
         }
         .skills ul {
@@ -66,9 +78,10 @@
             display: flex;
             flex-wrap: wrap;
             gap: 1rem;
+            justify-content: center;
         }
         .skills ul li {
-            background-color: #f0f0f0;
+            background-color: #e0e0e0;
             padding: 0.5rem 1rem;
             border-radius: 5px;
             font-size: 0.9rem;
@@ -87,9 +100,10 @@
     </nav>
     <div class="about-container">
         <h1>About Me</h1>
+        <img src="images/srinjay.jpg" alt="Srinjay Ghosh" class="profile-img">
         <p>Hello, I'm Srinjay Ghosh, a third-year B.Tech student at KIIT University, passionate about programming, filmmaking, and travel. Hailing from Bengal, I blend creativity and technology to build innovative solutions and tell compelling stories.</p>
         <p>As a programmer, I specialize in Python, Java, and web development (HTML, CSS, JavaScript, React). I’ve built responsive websites, data visualization tools, and managed digital campaigns, thriving on solving complex problems. My internships at KIIT University’s digital team and Shine Projects, Hyderabad, honed my skills in media management, marketing analytics, and project optimization.</p>
-        <p>Beyond coding, I’m a filmmaker and photographer, capturing landscapes and urban scenes through my lens. I create short films, experimenting with video **`1.3.0`**video editing and color grading to evoke emotions. Travel fuels my inspiration—I dream of exploring mountains worldwide, with a recent trip to Kinnaur Valley sparking my creativity.</p>
+        <p>Beyond coding, I’m a filmmaker and photographer, capturing landscapes and urban scenes through my lens. IF I create short films, experimenting with video editing and color grading to evoke emotions. Travel fuels my inspiration—I dream of exploring mountains worldwide, with a recent trip to Kinnaur Valley sparking my creativity.</p>
         <p>I’m driven by curiosity and a desire to learn, constantly working on projects that merge my technical and artistic passions. Explore my portfolio to see my work, and join me on this journey of creation and discovery!</p>
         <div class="skills">
             <h2>Skills</h2>
