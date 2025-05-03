@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Certificates</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #e0eafc, #cfdef3);
+      margin: 0;
+      padding: 30px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 40px;
+    }
+
+    .scroll-container {
+      display: flex;
+      overflow-x: auto;
+      gap: 50px;
+      padding-bottom: 20px;
+      scroll-snap-type: x mandatory;
+    }
+
+    .certificate-block {
+      flex: 0 0 auto;
+      scroll-snap-align: start;
+      background-color: white;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+      min-width: 400px;
+      max-width: 600px;
+    }
+
+    .certificate-block img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    .certificate-block p {
+      font-size: 16px;
+      color: #444;
+    }
+
+    /* Custom scrollbar */
+    .scroll-container::-webkit-scrollbar {
+      height: 12px;
+    }
+    .scroll-container::-webkit-scrollbar-thumb {
+      background: #888;
+      border-radius: 10px;
+    }
+    .scroll-container::-webkit-scrollbar-thumb:hover {
+      background: #555;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>My Certificates</h1>
+
+  <div class="scroll-container">
+    <div class="certificate-block">
+      <img src="certificates/cert1.jpg" alt="Certificate 1">
+      <p>Your description for certificate 1 goes here.</p>
+    </div>
+    <div class="certificate-block">
+      <img src="certificates/cert2.jpg" alt="Certificate 2">
+      <p>Your description for certificate 2 goes here.</p>
+    </div>
+    <!-- Add more blocks as needed -->
+  </div>
+
+</body>
+</html>
