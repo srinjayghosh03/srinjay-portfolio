@@ -77,10 +77,10 @@
         <h1>My Photography</h1>
         <div class="gallery">
             <!-- Replace with your actual image files -->
-            <img src="images/kinnaur_valley.jpg" alt="Kinnaur Valley Landscape">
-            <img src="images/city_sunset.jpg" alt="City Sunset">
-            <img src="images/forest_trail.jpg" alt="Forest Trail">
-            <img src="images/ocean_wave.jpg" alt="Ocean Wave">
+            <img src="images/Screenshot 2025-05-03 000357.png" alt="MyClick1">
+            <img src="images/Screenshot 2025-05-03 000337.png" alt="CMyClick2">
+            <img src="images/Screenshot 2025-05-03 000312.png" alt="MyClick3">
+            <img src="images/Screenshot 2025-05-03 000244.png" alt="Myclick4">
         </div>
     </div>
 </body>
