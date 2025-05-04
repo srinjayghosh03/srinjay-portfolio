@@ -4,168 +4,98 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Photography | Srinjay Ghosh</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
     body {
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-      color: #333;
-      line-height: 1.6;
     }
-
-    nav {
-      background: #1a1a1a;
-      padding: 15px 0;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-    }
-
-    nav ul li a {
-      color: white;
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 1.1rem;
-      transition: color 0.3s ease;
-    }
-
-    nav ul li a:hover {
-      color: #ff6f61;
-    }
-
-    header {
-      background: #2c2c2c;
-      color: white;
-      padding: 30px 0;
-      text-align: center;
-      font-size: 2.2rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    }
-
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px;
-      padding: 40px 20px;
-      max-width: 1300px;
-      margin: 0 auto;
-    }
-
-    .gallery-item {
-      position: relative;
-      overflow: hidden;
-      border-radius: 15px;
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
-      transition: transform 0.3s ease;
-    }
-
-    .gallery-item img {
-      width: 100%;
-      height: 250px;
-      object-fit: cover;
-      display: block;
-      border-radius: 15px;
-    }
-
-    .gallery-item:hover {
-      transform: translateY(-5px);
-    }
-
-    .gallery-item .caption {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: rgba(0, 0, 0, 0.7);
-      color: white;
-      padding: 10px;
-      text-align: center;
-      font-size: 0.9rem;
-      transform: translateY(100%);
-      transition: transform 0.3s ease;
-    }
-
-    .gallery-item:hover .caption {
-      transform: translateY(0);
-    }
-
-    footer {
-      text-align: center;
-      padding: 15px;
-      background: #1a1a1a;
-      color: #bbb;
-      font-size: 0.85rem;
-      position: relative;
-      bottom: 0;
-      width: 100%;
+    .gradient-bg {
+      background: linear-gradient(to bottom right, #1e3a8a, #3b82f6);
     }
   </style>
 </head>
-<body>
-  <nav>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="photography.html">Photography</a></li>
-    
-    </ul>
-  </nav>
-
-  <header>
-    My Clicks
+<body class="text-white gradient-bg min-h-screen">
+  <!-- Header -->
+  <header class="p-6 flex justify-between items-center bg-opacity-20 backdrop-blur-lg shadow-md">
+    <h1 class="text-3xl font-bold">Srinjay Ghosh</h1>
+    <nav class="space-x-6">
+      <a href="index.html" class="hover:text-yellow-300">Home</a>
+      <a href="about.html" class="hover:text-yellow-300">About</a>
+      <a href="photography.html" class="hover:text-yellow-300">Photography</a>
+      <a href="projects.html" class="hover:text-yellow-300">Projects</a>
+      <a href="contact.html" class="hover:text-yellow-300">Contact</a>
+    </nav>
   </header>
 
-  <section class="gallery">
-    <div class="gallery-item">
-      <img src="https://raw.githubusercontent.com/srinjayghosh03/srinjay-portfolio/main/images/Screenshot%202025-05-03%20000357.png" alt="Activity 1" />
-      <div class="caption">Activity 1</div>
-    </div>
-    
-    <div class="gallery-item">
-      <img src="https://raw.githubusercontent.com/srinjayghosh03/srinjay-portfolio/main/images/Screenshot%202025-05-03%20000312.png" alt="Activity 3" />
-      <div class="caption">Activity 3</div>
-    </div>
-    <div class="gallery-item">
-      <img src="https://raw.githubusercontent.com/srinjayghosh03/srinjay-portfolio/main/images/Screenshot%202025-05-03%20000244.png" alt="Activity 4" />
-      <div class="caption">Activity 4</div>
-    </div>
-    <div class="gallery-item">
-      <img src="https://raw.githubusercontent.com/srinjayghosh03/srinjay-portfolio/main/images/Screenshot%202025-05-03%20000226.png" alt="Activity 5" />
-      <div class="caption">Activity 5</div>
-    </div>
-    <div class="gallery-item">
-      <img src="https://raw.githubusercontent.com/srinjayghosh03/srinjay-portfolio/main/images/Screenshot%202025-05-03%20000205.png" alt="Activity 6" />
-      <div class="caption">Activity 6</div>
-    </div>
-    <div class="gallery-item">
-      <img src="https://raw.githubusercontent.com/srinjayghosh03/srinjay-portfolio/main/images/Screenshot%202025-05-03%20000140.png" alt="Activity 7" />
-      <div class="caption">Activity 7</div>
-    </div>
-    <div class="gallery-item">
-      <img src="https://raw.githubusercontent.com/srinjayghosh03/srinjay-portfolio/main/images/Screenshot%202025-05-03%20000104.png" alt="Activity 8" />
-      <div class="caption">Activity 8</div>
-    </div>
-    <div class="gallery-item">
-      <img src="https://raw.githubusercontent.com/srinjayghosh03/srinjay-portfolio/main/images/Screenshot%202025-05-03%20000047.png" alt="Activity 9" />
-      <div class="caption">Activity 9</div>
+  <!-- Hero Section -->
+  <section class="p-10 text-center">
+    <h2 class="text-4xl md:text-5xl font-bold mb-4">My Clicks</h2>
+    <p class="text-xl max-w-3xl mx-auto">A collection of moments captured through my lens, showcasing the beauty of the world as I see it.</p>
+  </section>
+
+  <!-- Gallery Section -->
+  <section class="bg-white text-gray-800 rounded-t-3xl p-10 md:p-16 shadow-2xl">
+    <div class="max-w-5xl mx-auto">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="relative group">
+          <img src="https://raw.githubusercontent.com/srinjayghosh03/srinjay-portfolio/main/images/Screenshot%202025-05-03%20000357.png" alt="Activity 1" class="w-full h-64 object-cover rounded-lg shadow-md" />
+          <div class="absolute inset-0 bg-blue-600 bg-opacity-0 group-hover:bg-opacity-60 transition-opacity duration-300 rounded-lg flex items-center justify-center">
+            <p class="text-white text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">Activity 1</p>
+          </div>
+        </div>
+       
+        </div>
+        <div class="relative group">
+          <img src="https://raw.githubusercontent.com/srinjayghosh03/srinjay-portfolio/main/images/Screenshot%202025-05-03%20000312.png" alt="Activity 3" class="w-full h-64 object-cover rounded-lg shadow-md" />
+          <div class="absolute inset-0 bg-blue-600 bg-opacity-0 group-hover:bg-opacity-60 transition-opacity duration-300 rounded-lg flex items-center justify-center">
+            <p class="text-white text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">Activity 3</p>
+          </div>
+        </div>
+        <div class="relative group">
+          <img src="https://raw.githubusercontent.com/srinjayghosh03/srinjay-portfolio/main/images/Screenshot%202025-05-03%20000244.png" alt="Activity 4" class="w-full h-64 object-cover rounded-lg shadow-md" />
+          <div class="absolute inset-0 bg-blue-600 bg-opacity-0 group-hover:bg-opacity-60 transition-opacity duration-300 rounded-lg flex items-center justify-center">
+            <p class="text-white text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">Activity 4</p>
+          </div>
+        </div>
+        <div class="relative group">
+          <img src="https://raw.githubusercontent.com/srinjayghosh03/srinjay-portfolio/main/images/Screenshot%202025-05-03%20000226.png" alt="Activity 5" class="w-full h-64 object-cover rounded-lg shadow-md" />
+          <div class="absolute inset-0 bg-blue-600 bg-opacity-0 group-hover:bg-opacity-60 transition-opacity duration-300 rounded-lg flex items-center justify-center">
+            <p class="text-white text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">Activity 5</p>
+          </div>
+        </div>
+        <div class="relative group">
+          <img src="https://raw.githubusercontent.com/srinjayghosh03/srinjay-portfolio/main/images/Screenshot%202025-05-03%20000205.png" alt="Activity 6" class="w-full h-64 object-cover rounded-lg shadow-md" />
+          <div class="absolute inset-0 bg-blue-600 bg-opacity-0 group-hover:bg-opacity-60 transition-opacity duration-300 rounded-lg flex items-center justify-center">
+            <p class="text-white text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">Activity 6</p>
+          </div>
+        </div>
+        <div class="relative group">
+          <img src="https://raw.githubusercontent.com/srinjayghosh03/srinjay-portfolio/main/images/Screenshot%202025-05-03%20000140.png" alt="Activity 7" class="w-full h-64 object-cover rounded-lg shadow-md" />
+          <div class="absolute inset-0 bg-blue-600 bg-opacity-0 group-hover:bg-opacity-60 transition-opacity duration-300 rounded-lg flex items-center justify-center">
+            <p class="text-white text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">Activity 7</p>
+          </div>
+        </div>
+        <div class="relative group">
+          <img src="https://raw.githubusercontent.com/srinjayghosh03/srinjay-portfolio/main/images/Screenshot%202025-05-03%20000104.png" alt="Activity 8" class="w-full h-64 object-cover rounded-lg shadow-md" />
+          <div class="absolute inset-0 bg-blue-600 bg-opacity-0 group-hover:bg-opacity-60 transition-opacity duration-300 rounded-lg flex items-center justify-center">
+            <p class="text-white text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">Activity 8</p>
+          </div>
+        </div>
+        <div class="relative group">
+          <img src="https://raw.githubusercontent.com/srinjayghosh03/srinjay-portfolio/main/images/Screenshot%202025-05-03%20000047.png" alt="Activity 9" class="w-full h-64 object-cover rounded-lg shadow-md" />
+          <div class="absolute inset-0 bg-blue-600 bg-opacity-0 group-hover:bg-opacity-60 transition-opacity duration-300 rounded-lg flex items-center justify-center">
+            <p class="text-white text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">Activity 9</p>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <footer>
-    © 2025 Srinjay Ghosh | All rights reserved.
+  <!-- Footer -->
+  <footer class="text-center p-6 text-sm bg-opacity-10 backdrop-blur-md">
+    <p>© 2025 Srinjay Ghosh | <a href="mailto:srinjayghosh.03@gmail.com" class="underline hover:text-yellow-300">srinjayghosh.03@gmail.com</a></p>
   </footer>
 </body>
 </html>
