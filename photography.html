@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
   <style>
     body {
       font-family: 'Poppins', sans-serif;
@@ -29,6 +30,20 @@
     }
     .hero-bg {
       background: url('https://www.transparenttextures.com/patterns/subtle-white-feathers.png'), #dbeafe;
+      position: relative;
+      overflow: hidden;
+    }
+    #particles-js {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 0;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
     }
     .progress-bar {
       position: fixed;
@@ -66,6 +81,9 @@
     .dark-mode .text-blue-600 {
       color: #60a5fa;
     }
+    .dark-mode .text-blue-800 {
+      color: #60a5fa;
+    }
     .dark-mode .hero-bg {
       background: url('https://www.transparenttextures.com/patterns/subtle-white-feathers.png'), #1e3a8a;
     }
@@ -83,6 +101,69 @@
     }
     #back-to-top:hover {
       background: #2563eb;
+    }
+    .title-anim {
+      opacity: 0;
+      transform: scale(0.95);
+      animation: titleFadeIn 1s ease forwards;
+    }
+    @keyframes titleFadeIn {
+      0% { opacity: 0; transform: scale(0.95); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+    .timeline {
+      position: relative;
+      padding-left: 40px;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 20px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: #3b82f6;
+    }
+    .timeline-item {
+      position: relative;
+      margin-bottom: 40px;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -37px;
+      top: 10px;
+      width: 16px;
+      height: 16px;
+      background: #3b82f6;
+      border-radius: 50%;
+      border: 3px solid #ffffff;
+      transition: transform 0.3s ease;
+    }
+    .timeline-item:hover::before {
+      transform: scale(1.2);
+    }
+    .photo-card {
+      background: white;
+      border: 2px solid transparent;
+      transition: all 0.3s ease;
+    }
+    .photo-card:hover {
+      border-image: linear-gradient(to right, #1e3a8a, #3b82f6) 1;
+      box-shadow: 0 10px 20px rgba(59, 130, 246, 0.2);
+    }
+    .dark-mode .photo-card {
+      background: #374151;
+    }
+    .dark-mode .timeline::before {
+      background: #60a5fa;
+    }
+    .dark-mode .timeline-item::before {
+      background: #60a5fa;
+      border-color: #1f2937;
+    }
+    .dark-mode .photo-card:hover {
+      border-image: linear-gradient(to right, #1e40af, #60a5fa) 1;
     }
   </style>
 </head>
@@ -105,67 +186,88 @@
 
   <!-- Hero Section -->
   <section class="hero-bg p-10 text-center">
-    <h2 class="text-4xl md:text-5xl font-bold mb-4 text-blue-800">My Clicks</h2>
-    <p id="typed-text" class="text-xl max-w-3xl mx-auto text-gray-700"></p>
+    <div id="particles-js"></div>
+    <div class="hero-content">
+      <h2 class="text-4xl md:text-5xl font-bold mb-4 text-blue-800 title-anim">My Clicks</h2>
+      <p id="typed-text" class="text-xl max-w-3xl mx-auto text-gray-700"></p>
+    </div>
   </section>
 
   <!-- Photography Section -->
   <section class="bg-gray-100 text-gray-800 py-16 px-6 md:px-20">
     <div class="max-w-4xl mx-auto space-y-12">
-      <!-- Photo 1 -->
-      <div class="photo-item">
-        <img src="https://raw.githubusercontent.com/srinjayghosh03/srinjay-portfolio/main/images/Screenshot%202025-05-03%20000357.png" alt="Activity 1" class="photo-img w-full h-auto rounded-lg shadow-md" />
-        <h3 class="text-2xl font-semibold text-blue-600 mt-4">Activity 1: A Burst of Color</h3>
-        <p class="text-lg leading-relaxed mt-2">This vibrant scene captures the energy of a local festival, where colors and emotions collide in a beautiful dance of celebration.</p>
-      </div>
+      <div class="timeline">
+        <!-- Photo 1 -->
+        <div class="timeline-item photo-item">
+          <div class="photo-card rounded-lg shadow-md p-6">
+            <img src="https://raw.githubusercontent.com/srinjayghosh03/srinjay-portfolio/main/images/Screenshot%202025-05-03%20000357.png" alt="Activity 1" class="photo-img w-full h-auto rounded-lg shadow-md" />
+            <h3 class="text-2xl font-semibold text-blue-600 mt-4">Activity 1: A Burst of Color</h3>
+            <p class="text-lg leading-relaxed mt-2">This vibrant scene captures the energy of a local festival, where colors and emotions collide in a beautiful dance of celebration.</p>
+          </div>
+        </div>
 
-      <!-- Photo 2 -->
-      <div class="photo-item">
-        <img src="https://raw.githubusercontent.com/srinjayghosh03/srinjay-portfolio/main/images/Screenshot%202025-05-03%20000312.png" alt="Activity 3" class="photo-img w-full h-auto rounded-lg shadow-md" />
-        <h3 class="text-2xl font-semibold text-blue-600 mt-4">Activity 3: Serenity Over the Horizon</h3>
-        <p class="text-lg leading-relaxed mt-2">A tranquil sunset over the mountains, where the sky paints a masterpiece of oranges, pinks, and purples.</p>
-      </div>
+        <!-- Photo 2 -->
+        <div class="timeline-item photo-item">
+          <div class="photo-card rounded-lg shadow-md p-6">
+            <img src="https://raw.githubusercontent.com/srinjayghosh03/srinjay-portfolio/main/images/Screenshot%202025-05-03%20000312.png" alt="Activity 3" class="photo-img w-full h-auto rounded-lg shadow-md" />
+            <h3 class="text-2xl font-semibold text-blue-600 mt-4">Activity 3: Serenity Over the Horizon</h3>
+            <p class="text-lg leading-relaxed mt-2">A tranquil sunset over the mountains, where the sky paints a masterpiece of oranges, pinks, and purples.</p>
+          </div>
+        </div>
 
-      <!-- Photo 3 -->
-      <div class="photo-item">
-        <img src="https://raw.githubusercontent.com/srinjayghosh03/srinjay-portfolio/main/images/Screenshot%202025-05-03%20000244.png" alt="Activity 4" class="photo-img w-full h-auto rounded-lg shadow-md" />
-        <h3 class="text-2xl font-semibold text-blue-600 mt-4">Activity 4: Urban Reflections</h3>
-        <p class="text-lg leading-relaxed mt-2">The city comes alive in this shot, with glass buildings reflecting the chaos and beauty of urban life.</p>
-      </div>
+        <!-- Photo 3 -->
+        <div class="timeline-item photo-item">
+          <div class="photo-card rounded-lg shadow-md p-6">
+            <img src="https://raw.githubusercontent.com/srinjayghosh03/srinjay-portfolio/main/images/Screenshot%202025-05-03%20000244.png" alt="Activity 4" class="photo-img w-full h-auto rounded-lg shadow-md" />
+            <h3 class="text-2xl font-semibold text-blue-600 mt-4">Activity 4: Urban Reflections</h3>
+            <p class="text-lg leading-relaxed mt-2">The city comes alive in this shot, with glass buildings reflecting the chaos and beauty of urban life.</p>
+          </div>
+        </div>
 
-      <!-- Photo 4 -->
-      <div class="photo-item">
-        <img src="https://raw.githubusercontent.com/srinjayghosh03/srinjay-portfolio/main/images/Screenshot%202025-05-03%20000226.png" alt="Activity 5" class="photo-img w-full h-auto rounded-lg shadow-md" />
-        <h3 class="text-2xl font-semibold text-blue-600 mt-4">Activity 5: Nature's Embrace</h3>
-        <p class="text-lg leading-relaxed mt-2">A serene moment in the forest, where the sunlight filters through the leaves, creating a magical glow.</p>
-      </div>
+        <!-- Photo 4 -->
+        <div class="timeline-item photo-item">
+          <div class="photo-card rounded-lg shadow-md p-6">
+            <img src="https://raw.githubusercontent.com/srinjayghosh03/srinjay-portfolio/main/images/Screenshot%202025-05-03%20000226.png" alt="Activity 5" class="photo-img w-full h-auto rounded-lg shadow-md" />
+            <h3 class="text-2xl font-semibold text-blue-600 mt-4">Activity 5: Nature's Embrace</h3>
+            <p class="text-lg leading-relaxed mt-2">A serene moment in the forest, where the sunlight filters through the leaves, creating a magical glow.</p>
+          </div>
+        </div>
 
-      <!-- Photo 5 -->
-      <div class="photo-item">
-        <img src="https://raw.githubusercontent.com/srinjayghosh03/srinjay-portfolio/main/images/Screenshot%202025-05-03%20000205.png" alt="Activity 6" class="photo-img w-full h-auto rounded-lg shadow-md" />
-        <h3 class="text-2xl font-semibold text-blue-600 mt-4">Activity 6: The Quiet Village</h3>
-        <p class="text-lg leading-relaxed mt-2">A quaint village scene, capturing the simplicity and peace of rural life under a vast, open sky.</p>
-      </div>
+        <!-- Photo 5 -->
+        <div class="timeline-item photo-item">
+          <div class="photo-card rounded-lg shadow-md p-6">
+            <img src="https://raw.githubusercontent.com/srinjayghosh03/srinjay-portfolio/main/images/Screenshot%202025-05-03%20000205.png" alt="Activity 6" class="photo-img w-full h-auto rounded-lg shadow-md" />
+            <h3 class="text-2xl font-semibold text-blue-600 mt-4">Activity 6: The Quiet Village</h3>
+            <p class="text-lg leading-relaxed mt-2">A quaint village scene, capturing the simplicity and peace of rural life under a vast, open sky.</p>
+          </div>
+        </div>
 
-      <!-- Photo 6 -->
-      <div class="photo-item">
-        <img src="https://raw.githubusercontent.com/srinjayghosh03/srinjay-portfolio/main/images/Screenshot%202025-05-03%20000140.png" alt="Activity 7" class="photo-img w-full h-auto rounded-lg shadow-md" />
-        <h3 class="text-2xl font-semibold text-blue-600 mt-4">Activity 7: Morning Dew</h3>
-        <p class="text-lg leading-relaxed mt-2">Close-up of fresh morning dew on grass, reflecting the first light of dawn in tiny, perfect droplets.</p>
-      </div>
+        <!-- Photo 6 -->
+        <div class="timeline-item photo-item">
+          <div class="photo-card rounded-lg shadow-md p-6">
+            <img src="https://raw.githubusercontent.com/srinjayghosh03/srinjay-portfolio/main/images/Screenshot%202025-05-03%20000140.png" alt="Activity 7" class="photo-img w-full h-auto rounded-lg shadow-md" />
+            <h3 class="text-2xl font-semibold text-blue-600 mt-4">Activity 7: Morning Dew</h3>
+            <p class="text-lg leading-relaxed mt-2">Close-up of fresh morning dew on grass, reflecting the first light of dawn in tiny, perfect droplets.</p>
+          </div>
+        </div>
 
-      <!-- Photo 7 -->
-      <div class="photo-item">
-        <img src="https://raw.githubusercontent.com/srinjayghosh03/srinjay-portfolio/main/images/Screenshot%202025-05-03%20000104.png" alt="Activity 8" class="photo-img w-full h-auto rounded-lg shadow-md" />
-        <h3 class="text-2xl font-semibold text-blue-600 mt-4">Activity 8: Street Stories</h3>
-        <p class="text-lg leading-relaxed mt-2">A candid shot of a bustling street market, filled with stories of vendors, shoppers, and daily life.</p>
-      </div>
+        <!-- Photo 7 -->
+        <div class="timeline-item photo-item">
+          <div class="photo-card rounded-lg shadow-md p-6">
+            <img src="https://raw.githubusercontent.com/srinjayghosh03/srinjay-portfolio/main/images/Screenshot%202025-05-03%20000104.png" alt="Activity 8" class="photo-img w-full h-auto rounded-lg shadow-md" />
+            <h3 class="text-2xl font-semibold text-blue-600 mt-4">Activity 8: Street Stories</h3>
+            <p class="text-lg leading-relaxed mt-2">A candid shot of a bustling street market, filled with stories of vendors, shoppers, and daily life.</p>
+          </div>
+        </div>
 
-      <!-- Photo 8 -->
-      <div class="photo-item">
-        <img src="https://raw.githubusercontent.com/srinjayghosh03/srinjay-portfolio/main/images/Screenshot%202025-05-03%20000047.png" alt="Activity 9" class="photo-img w-full h-auto rounded-lg shadow-md" />
-        <h3 class="text-2xl font-semibold text-blue-600 mt-4">Activity 9: Ocean Whispers</h3>
-        <p class="text-lg leading-relaxed mt-2">The ocean waves crash gently on the shore, whispering tales of the deep in this calming seascape.</p>
+        <!-- Photo 8 -->
+        <div class="timeline-item photo-item">
+          <div class="photo-card rounded-lg shadow-md p-6">
+            <img src="https://raw.githubusercontent.com/srinjayghosh03/srinjay-portfolio/main/images/Screenshot%202025-05-03%20000047.png" alt="Activity 9" class="photo-img w-full h-auto rounded-lg shadow-md" />
+            <h3 class="text-2xl font-semibold text-blue-600 mt-4">Activity 9: Ocean Whispers</h3>
+            <p class="text-lg leading-relaxed mt-2">The ocean waves crash gently on the shore, whispering tales of the deep in this calming seascape.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -193,6 +295,25 @@
       backSpeed: 30,
       backDelay: 1000,
       loop: true
+    });
+
+    // Particles.js for hero section
+    particlesJS('particles-js', {
+      particles: {
+        number: { value: 80, density: { enable: true, value_area: 800 } },
+        color: { value: '#3b82f6' },
+        shape: { type: 'circle' },
+        opacity: { value: 0.5, random: true },
+        size: { value: 3, random: true },
+        line_linked: { enable: true, distance: 150, color: '#3b82f6', opacity: 0.4, width: 1 },
+        move: { enable: true, speed: 2, direction: 'none', random: false, straight: false, out_mode: 'out', bounce: false }
+      },
+      interactivity: {
+        detect_on: 'canvas',
+        events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' }, resize: true },
+        modes: { repulse: { distance: 100, duration: 0.4 }, push: { particles_nb: 4 } }
+      },
+      retina_detect: true
     });
 
     // Scroll animations for photos
@@ -231,7 +352,7 @@
     const backToTopButton = document.getElementById('back-to-top');
     window.addEventListener('scroll', () => {
       if (window.scrollY > 300) {
-        backToTopButton.style.display = 'block';
+        backToTopButton.style LOCKEDdisplay = 'block';
       } else {
         backToTopButton.style.display = 'none';
       }
