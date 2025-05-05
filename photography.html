@@ -14,18 +14,24 @@
     .gradient-bg {
       background: linear-gradient(to bottom right, #1e3a8a, #3b82f6);
     }
+    .gallery-item img {
+      transition: transform 0.3s ease;
+    }
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
   </style>
 </head>
 <body class="text-white gradient-bg min-h-screen">
   <!-- Header -->
   <header class="p-6 flex justify-between items-center bg-opacity-20 backdrop-blur-lg shadow-md">
     <h1 class="text-3xl font-bold">Srinjay Ghosh</h1>
-    <nav class="space-x-6">
-      <a href="index.html" class="hover:text-yellow-300">Home</a>
-      <a href="about.html" class="hover:text-yellow-300">About</a>
-      <a href="photography.html" class="hover:text-yellow-300">Photography</a>
-      <a href="projects.html" class="hover:text-yellow-300">Projects</a>
-      <a href="contact.html" class="hover:text-yellow-300">Contact</a>
+    <nav class="space-x-6 text-lg font-medium">
+      <a href="index.html" class="hover:text-yellow-300 transition duration-200">Home</a>
+      <a href="about.html" class="hover:text-yellow-300 transition duration-200">Discover</a>
+      <a href="photography.html" class="hover:text-yellow-300 transition duration-200">Photography</a>
+      <a href="projects.html" class="hover:text-yellow-300 transition duration-200">Projects</a>
+      <a href="contact.html" class="hover:text-yellow-300 transition duration-200">Contact</a>
     </nav>
   </header>
 
@@ -39,51 +45,49 @@
   <section class="bg-white text-gray-800 rounded-t-3xl p-10 md:p-16 shadow-2xl">
     <div class="max-w-5xl mx-auto">
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="relative group">
+        <div class="relative group gallery-item">
           <img src="https://raw.githubusercontent.com/srinjayghosh03/srinjay-portfolio/main/images/Screenshot%202025-05-03%20000357.png" alt="Activity 1" class="w-full h-64 object-cover rounded-lg shadow-md" />
           <div class="absolute inset-0 bg-blue-600 bg-opacity-0 group-hover:bg-opacity-60 transition-opacity duration-300 rounded-lg flex items-center justify-center">
             <p class="text-white text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">Activity 1</p>
           </div>
         </div>
-       
-        </div>
-        <div class="relative group">
+        <div class="relative group gallery-item">
           <img src="https://raw.githubusercontent.com/srinjayghosh03/srinjay-portfolio/main/images/Screenshot%202025-05-03%20000312.png" alt="Activity 3" class="w-full h-64 object-cover rounded-lg shadow-md" />
           <div class="absolute inset-0 bg-blue-600 bg-opacity-0 group-hover:bg-opacity-60 transition-opacity duration-300 rounded-lg flex items-center justify-center">
             <p class="text-white text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">Activity 3</p>
           </div>
         </div>
-        <div class="relative group">
+        <div class="relative group gallery-item">
           <img src="https://raw.githubusercontent.com/srinjayghosh03/srinjay-portfolio/main/images/Screenshot%202025-05-03%20000244.png" alt="Activity 4" class="w-full h-64 object-cover rounded-lg shadow-md" />
           <div class="absolute inset-0 bg-blue-600 bg-opacity-0 group-hover:bg-opacity-60 transition-opacity duration-300 rounded-lg flex items-center justify-center">
             <p class="text-white text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">Activity 4</p>
           </div>
         </div>
-        <div class="relative group">
+        <div class="relative group gallery-item">
           <img src="https://raw.githubusercontent.com/srinjayghosh03/srinjay-portfolio/main/images/Screenshot%202025-05-03%20000226.png" alt="Activity 5" class="w-full h-64 object-cover rounded-lg shadow-md" />
           <div class="absolute inset-0 bg-blue-600 bg-opacity-0 group-hover:bg-opacity-60 transition-opacity duration-300 rounded-lg flex items-center justify-center">
             <p class="text-white text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">Activity 5</p>
           </div>
         </div>
-        <div class="relative group">
+        <div class="relative group gallery-item">
           <img src="https://raw.githubusercontent.com/srinjayghosh03/srinjay-portfolio/main/images/Screenshot%202025-05-03%20000205.png" alt="Activity 6" class="w-full h-64 object-cover rounded-lg shadow-md" />
           <div class="absolute inset-0 bg-blue-600 bg-opacity-0 group-hover:bg-opacity-60 transition-opacity duration-300 rounded-lg flex items-center justify-center">
             <p class="text-white text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">Activity 6</p>
           </div>
         </div>
-        <div class="relative group">
+        <div class="relative group gallery-item">
           <img src="https://raw.githubusercontent.com/srinjayghosh03/srinjay-portfolio/main/images/Screenshot%202025-05-03%20000140.png" alt="Activity 7" class="w-full h-64 object-cover rounded-lg shadow-md" />
           <div class="absolute inset-0 bg-blue-600 bg-opacity-0 group-hover:bg-opacity-60 transition-opacity duration-300 rounded-lg flex items-center justify-center">
             <p class="text-white text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">Activity 7</p>
           </div>
         </div>
-        <div class="relative group">
+        <div class="relative group gallery-item">
           <img src="https://raw.githubusercontent.com/srinjayghosh03/srinjay-portfolio/main/images/Screenshot%202025-05-03%20000104.png" alt="Activity 8" class="w-full h-64 object-cover rounded-lg shadow-md" />
           <div class="absolute inset-0 bg-blue-600 bg-opacity-0 group-hover:bg-opacity-60 transition-opacity duration-300 rounded-lg flex items-center justify-center">
             <p class="text-white text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">Activity 8</p>
           </div>
         </div>
-        <div class="relative group">
+        <div class="relative group gallery-item">
           <img src="https://raw.githubusercontent.com/srinjayghosh03/srinjay-portfolio/main/images/Screenshot%202025-05-03%20000047.png" alt="Activity 9" class="w-full h-64 object-cover rounded-lg shadow-md" />
           <div class="absolute inset-0 bg-blue-600 bg-opacity-0 group-hover:bg-opacity-60 transition-opacity duration-300 rounded-lg flex items-center justify-center">
             <p class="text-white text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">Activity 9</p>
@@ -96,6 +100,7 @@
   <!-- Footer -->
   <footer class="text-center p-6 text-sm bg-opacity-10 backdrop-blur-md">
     <p>© 2025 Srinjay Ghosh | <a href="mailto:srinjayghosh.03@gmail.com" class="underline hover:text-yellow-300">srinjayghosh.03@gmail.com</a></p>
+    <a href="index.html" class="inline-block mt-4 px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-200">Home</a>
   </footer>
 </body>
 </html>
