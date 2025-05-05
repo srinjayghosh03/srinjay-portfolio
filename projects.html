@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects - Srinjay Ghosh</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+    .gradient-bg {
+      background: linear-gradient(to bottom right, #1e3a8a, #60a5fa);
+    }
+  </style>
+</head>
+<body class="text-white gradient-bg min-h-screen">
+
+  <!-- Header -->
+  <header class="p-6 flex justify-between items-center bg-opacity-20 backdrop-blur-lg shadow-md">
+    <h1 class="text-3xl font-bold">Srinjay Ghosh</h1>
+    <nav class="space-x-6">
+      <a href="index.html" class="hover:text-yellow-300 transition">Home</a>
+      <a href="resume.html" class="hover:text-yellow-300 transition">Resume</a>
+      <a href="photography.html" class="hover:text-yellow-300 transition">Photography</a>
+      <a href="projects.html" class="hover:text-yellow-300 transition">Projects</a>
+      <a href="internship.html" class="hover:text-yellow-300 transition">Internships</a>
+    </nav>
+  </header>
+
+  <!-- Projects Section -->
+  <section class="p-10 md:p-16">
+    <div class="max-w-5xl mx-auto space-y-12">
+
+      <div class="text-center">
+        <h2 class="text-5xl font-bold mb-4">My Projects</h2>
+        <p class="text-xl max-w-3xl mx-auto">A showcase of my journey through code, creativity, and innovation.</p>
+      </div>
+
+      <!-- Project 1: Skin Cancer Detection Using Machine Learning -->
+      <div class="bg-white text-gray-800 rounded-lg shadow-lg p-6 hover:shadow-2xl transition duration-300">
+        <h3 class="text-2xl font-semibold mb-2">Skin Cancer Detection Using Machine Learning</h3>
+        <p class="mb-4">This project was centered around using deep learning to help identify skin cancer through dermoscopic image analysis. Using the ISIC2018 dataset, which consists of thousands of labeled skin lesion images, I trained a Convolutional Neural Network (CNN) model capable of classifying images as benign or malignant. I also integrated ESRGAN-based super-resolution techniques to improve image clarity and model precision. My primary contribution included designing the data preprocessing pipeline, training the CNN, evaluating the model using various metrics, and interpreting the results to ensure a clinically meaningful output. This project aims to support dermatologists by providing a quick, accurate pre-screening tool.</p>
+      </div>
+
+      <!-- Project 2: Online Movie Ticket Booking System -->
+      <div class="bg-white text-gray-800 rounded-lg shadow-lg p-6 hover:shadow-2xl transition duration-300">
+        <h3 class="text-2xl font-semibold mb-2">Online Movie Ticket Booking System</h3>
+        <p class="mb-4">This project involved creating a web-based application that allows users to search, book, and manage movie tickets from the comfort of their homes. The system featured user authentication, dynamic seat selection, movie filtering, and a real-time booking database. I developed the front-end using HTML, CSS, and JavaScript, and the back-end using PHP and MySQL. My major responsibilities included building the UI, developing the ticketing logic, and managing the database schema. This platform aimed to replicate the functionality of commercial ticketing apps with a focus on simplicity and user convenience. It significantly reduced manual effort in ticket management and improved accessibility.</p>
+      </div>
+
+      <!-- Project 3: RFID Smart Lock System -->
+      <div class="bg-white text-gray-800 rounded-lg shadow-lg p-6 hover:shadow-2xl transition duration-300">
+        <h3 class="text-2xl font-semibold mb-2">RFID Smart Lock System</h3>
+        <p class="mb-4">The RFID Smart Lock System was designed to enhance physical security using RFID-based authentication. Using an Arduino microcontroller, RFID reader, servo motor, and buzzer, I built a smart locking mechanism that opens upon detecting an authorized RFID tag. My contribution involved wiring the components, coding the Arduino logic to handle verification and motor control, and testing the system under different conditions to ensure reliability. I also added an alert system for unauthorized access attempts. The project presents a scalable, low-cost alternative for traditional locks, aimed at increasing security in homes, hostels, or offices with digital key access.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center p-6 text-sm bg-blue-900 text-white mt-10">
+    <p>&copy; 2025 Srinjay Ghosh | <a href="mailto:srinjayghosh.03@gmail.com" class="underline hover:text-yellow-300">srinjayghosh.03@gmail.com</a> | <span>📍 Based in Bengal, India</span></p>
+    <a href="index.html" class="inline-block mt-3 bg-yellow-400 text-blue-900 px-4 py-2 rounded-full font-semibold hover:bg-yellow-300 transition duration-200">
+      ⬅ Back to Home
+    </a>
+  </footer>
+
+</body>
+</html>
