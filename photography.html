@@ -7,12 +7,10 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
   <style>
     body {
       font-family: 'Poppins', sans-serif;
-    }
-    .gradient-bg {
-      background: linear-gradient(to bottom right, #1e3a8a, #3b82f6);
     }
     .photo-item {
       opacity: 0;
@@ -29,25 +27,90 @@
     .photo-img:hover {
       transform: scale(1.03);
     }
+    .hero-bg {
+      background: url('https://www.transparenttextures.com/patterns/subtle-white-feathers.png'), #dbeafe;
+    }
+    .progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 4px;
+      background: #3b82f6;
+      width: 0%;
+      z-index: 50;
+      transition: width 0.3s ease;
+    }
+    .nav-shadow {
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: box-shadow 0.3s ease;
+    }
+    .dark-mode {
+      background: #1f2937;
+      color: #e5e7eb;
+    }
+    .dark-mode .bg-white {
+      background: #1f2937;
+    }
+    .dark-mode .bg-gray-100 {
+      background: #374151;
+    }
+    .dark-mode .text-gray-800 {
+      color: #e5e7eb;
+    }
+    .dark-mode .text-gray-900 {
+      color: #e5e7eb;
+    }
+    .dark-mode .bg-blue-900 {
+      background: #1e40af;
+    }
+    .dark-mode .text-blue-600 {
+      color: #60a5fa;
+    }
+    .dark-mode .hero-bg {
+      background: url('https://www.transparenttextures.com/patterns/subtle-white-feathers.png'), #1e3a8a;
+    }
+    #back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #3b82f6;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 50%;
+      display: none;
+      z-index: 50;
+      transition: opacity 0.3s ease;
+    }
+    #back-to-top:hover {
+      background: #2563eb;
+    }
   </style>
 </head>
-<body class="text-white gradient-bg min-h-screen">
+<body class="bg-white text-gray-900 min-h-screen transition-colors duration-300">
+  <!-- Progress Bar -->
+  <div class="progress-bar" id="progress-bar"></div>
+
   <!-- Header -->
-  <header class="p-6 flex justify-between items-center bg-opacity-20 backdrop-blur-lg shadow-md">
-    <h1 class="text-3xl font-bold">Srinjay Ghosh</h1>
+  <header id="header" class="p-6 flex justify-between items-center bg-blue-900 text-white sticky top-0 z-40">
+    <h1 class="text-2xl font-bold">Srinjay Ghosh</h1>
     <nav class="space-x-6 text-lg font-medium">
-  
+      <a href="index.html" class="hover:text-yellow-300 transition duration-200">Home</a>
+      <a href="photography.html" class="hover:text-yellow-300 transition duration-200">Photography</a>
+      <a href="projects.html" class="hover:text-yellow-300 transition duration-200">Projects</a>
+      <a href="internship.html" class="hover:text-yellow-300 transition duration-200">Internship</a>
+      <a href="FINALRESUME.pdf" class="hover:text-yellow-300 transition duration-200">Resume</a>
+      <button id="dark-mode-toggle" class="hover:text-yellow-300 transition duration-200">🌙</button>
     </nav>
   </header>
 
   <!-- Hero Section -->
-  <section class="p-10 text-center">
-    <h2 class="text-4xl md:text-5xl font-bold mb-4">My Clicks</h2>
-    <p class="text-xl max-w-3xl mx-auto">A collection of moments captured through my lens, showcasing the beauty of the world as I see it.</p>
+  <section class="hero-bg p-10 text-center">
+    <h2 class="text-4xl md:text-5xl font-bold mb-4 text-blue-800">My Clicks</h2>
+    <p id="typed-text" class="text-xl max-w-3xl mx-auto text-gray-700"></p>
   </section>
 
   <!-- Photography Section -->
-  <section class="bg-white text-gray-800 rounded-t-3xl p-10 md:p-16 shadow-2xl">
+  <section class="bg-gray-100 text-gray-800 py-16 px-6 md:px-20">
     <div class="max-w-4xl mx-auto space-y-12">
       <!-- Photo 1 -->
       <div class="photo-item">
@@ -108,13 +171,31 @@
   </section>
 
   <!-- Footer -->
-  <footer class="text-center p-6 text-sm bg-opacity-10 backdrop-blur-md">
-    <p>© 2025 Srinjay Ghosh | <a href="mailto:srinjayghosh.03@gmail.com" class="underline hover:text-yellow-300">srinjayghosh.03@gmail.com</a></p>
-    <a href="index.html" class="inline-block mt-4 px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-200">Home</a>
+  <footer class="text-center p-6 bg-blue-900 text-white mt-10">
+    <p class="mb-2">© 2025 Srinjay Ghosh | <a href="mailto:srinjayghosh.03@gmail.com" class="underline hover:text-yellow-300">srinjayghosh.03@gmail.com</a></p>
+    <a href="index.html" class="inline-block mt-2 bg-yellow-400 text-blue-900 px-4 py-2 rounded-full font-semibold hover:bg-yellow-300 transition duration-200">
+      Home
+    </a>
   </footer>
 
-  <!-- JavaScript for Scroll Animation -->
+  <!-- Back to Top Button -->
+  <button id="back-to-top" class="text-sm">⬆</button>
+
+  <!-- JavaScript for Interactivity -->
   <script>
+    // Typing animation for hero section
+    const typed = new Typed('#typed-text', {
+      strings: [
+        'A collection of moments captured through my lens.',
+        'Showcasing the beauty of the world as I see it.'
+      ],
+      typeSpeed: 50,
+      backSpeed: 30,
+      backDelay: 1000,
+      loop: true
+    });
+
+    // Scroll animations for photos
     document.addEventListener('DOMContentLoaded', () => {
       const items = document.querySelectorAll('.photo-item');
       const observer = new IntersectionObserver((entries) => {
@@ -126,6 +207,44 @@
       }, { threshold: 0.1 });
 
       items.forEach(item => observer.observe(item));
+    });
+
+    // Scroll progress bar
+    window.addEventListener('scroll', () => {
+      const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      document.getElementById('progress-bar').style.width = scrolled + '%';
+    });
+
+    // Sticky header shadow
+    window.addEventListener('scroll', () => {
+      const header = document.getElementById('header');
+      if (window.scrollY > 0) {
+        header.classList.add('nav-shadow');
+      } else {
+        header.classList.remove('nav-shadow');
+      }
+    });
+
+    // Back to top button
+    const backToTopButton = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTopButton.style.display = 'block';
+      } else {
+        backToTopButton.style.display = 'none';
+      }
+    });
+    backToTopButton.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Dark mode toggle
+    const darkModeToggle = document.getElementById('dark-mode-toggle');
+    darkModeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      darkModeToggle.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
     });
   </script>
 </body>
