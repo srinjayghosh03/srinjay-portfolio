@@ -14,11 +14,20 @@
     .gradient-bg {
       background: linear-gradient(to bottom right, #1e3a8a, #3b82f6);
     }
-    .gallery-item img {
+    .photo-item {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .photo-item.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .photo-img {
       transition: transform 0.3s ease;
     }
-    .gallery-item:hover img {
-      transform: scale(1.05);
+    .photo-img:hover {
+      transform: scale(1.03);
     }
   </style>
 </head>
@@ -27,6 +36,8 @@
   <header class="p-6 flex justify-between items-center bg-opacity-20 backdrop-blur-lg shadow-md">
     <h1 class="text-3xl font-bold">Srinjay Ghosh</h1>
     <nav class="space-x-6 text-lg font-medium">
+  
+    </nav>
   </header>
 
   <!-- Hero Section -->
@@ -35,58 +46,63 @@
     <p class="text-xl max-w-3xl mx-auto">A collection of moments captured through my lens, showcasing the beauty of the world as I see it.</p>
   </section>
 
-  <!-- Gallery Section -->
+  <!-- Photography Section -->
   <section class="bg-white text-gray-800 rounded-t-3xl p-10 md:p-16 shadow-2xl">
-    <div class="max-w-5xl mx-auto">
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="relative group gallery-item">
-          <img src="https://raw.githubusercontent.com/srinjayghosh03/srinjay-portfolio/main/images/Screenshot%202025-05-03%20000357.png" alt="Activity 1" class="w-full h-64 object-cover rounded-lg shadow-md" />
-          <div class="absolute inset-0 bg-blue-600 bg-opacity-0 group-hover:bg-opacity-60 transition-opacity duration-300 rounded-lg flex items-center justify-center">
-            <p class="text-white text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">Activity 1</p>
-          </div>
-        </div>
-        <div class="relative group gallery-item">
-          <img src="https://raw.githubusercontent.com/srinjayghosh03/srinjay-portfolio/main/images/Screenshot%202025-05-03%20000312.png" alt="Activity 3" class="w-full h-64 object-cover rounded-lg shadow-md" />
-          <div class="absolute inset-0 bg-blue-600 bg-opacity-0 group-hover:bg-opacity-60 transition-opacity duration-300 rounded-lg flex items-center justify-center">
-            <p class="text-white text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">Activity 3</p>
-          </div>
-        </div>
-        <div class="relative group gallery-item">
-          <img src="https://raw.githubusercontent.com/srinjayghosh03/srinjay-portfolio/main/images/Screenshot%202025-05-03%20000244.png" alt="Activity 4" class="w-full h-64 object-cover rounded-lg shadow-md" />
-          <div class="absolute inset-0 bg-blue-600 bg-opacity-0 group-hover:bg-opacity-60 transition-opacity duration-300 rounded-lg flex items-center justify-center">
-            <p class="text-white text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">Activity 4</p>
-          </div>
-        </div>
-        <div class="relative group gallery-item">
-          <img src="https://raw.githubusercontent.com/srinjayghosh03/srinjay-portfolio/main/images/Screenshot%202025-05-03%20000226.png" alt="Activity 5" class="w-full h-64 object-cover rounded-lg shadow-md" />
-          <div class="absolute inset-0 bg-blue-600 bg-opacity-0 group-hover:bg-opacity-60 transition-opacity duration-300 rounded-lg flex items-center justify-center">
-            <p class="text-white text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">Activity 5</p>
-          </div>
-        </div>
-        <div class="relative group gallery-item">
-          <img src="https://raw.githubusercontent.com/srinjayghosh03/srinjay-portfolio/main/images/Screenshot%202025-05-03%20000205.png" alt="Activity 6" class="w-full h-64 object-cover rounded-lg shadow-md" />
-          <div class="absolute inset-0 bg-blue-600 bg-opacity-0 group-hover:bg-opacity-60 transition-opacity duration-300 rounded-lg flex items-center justify-center">
-            <p class="text-white text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">Activity 6</p>
-          </div>
-        </div>
-        <div class="relative group gallery-item">
-          <img src="https://raw.githubusercontent.com/srinjayghosh03/srinjay-portfolio/main/images/Screenshot%202025-05-03%20000140.png" alt="Activity 7" class="w-full h-64 object-cover rounded-lg shadow-md" />
-          <div class="absolute inset-0 bg-blue-600 bg-opacity-0 group-hover:bg-opacity-60 transition-opacity duration-300 rounded-lg flex items-center justify-center">
-            <p class="text-white text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">Activity 7</p>
-          </div>
-        </div>
-        <div class="relative group gallery-item">
-          <img src="https://raw.githubusercontent.com/srinjayghosh03/srinjay-portfolio/main/images/Screenshot%202025-05-03%20000104.png" alt="Activity 8" class="w-full h-64 object-cover rounded-lg shadow-md" />
-          <div class="absolute inset-0 bg-blue-600 bg-opacity-0 group-hover:bg-opacity-60 transition-opacity duration-300 rounded-lg flex items-center justify-center">
-            <p class="text-white text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">Activity 8</p>
-          </div>
-        </div>
-        <div class="relative group gallery-item">
-          <img src="https://raw.githubusercontent.com/srinjayghosh03/srinjay-portfolio/main/images/Screenshot%202025-05-03%20000047.png" alt="Activity 9" class="w-full h-64 object-cover rounded-lg shadow-md" />
-          <div class="absolute inset-0 bg-blue-600 bg-opacity-0 group-hover:bg-opacity-60 transition-opacity duration-300 rounded-lg flex items-center justify-center">
-            <p class="text-white text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">Activity 9</p>
-          </div>
-        </div>
+    <div class="max-w-4xl mx-auto space-y-12">
+      <!-- Photo 1 -->
+      <div class="photo-item">
+        <img src="https://raw.githubusercontent.com/srinjayghosh03/srinjay-portfolio/main/images/Screenshot%202025-05-03%20000357.png" alt="Activity 1" class="photo-img w-full h-auto rounded-lg shadow-md" />
+        <h3 class="text-2xl font-semibold text-blue-600 mt-4">Activity 1: A Burst of Color</h3>
+        <p class="text-lg leading-relaxed mt-2">This vibrant scene captures the energy of a local festival, where colors and emotions collide in a beautiful dance of celebration.</p>
+      </div>
+
+      <!-- Photo 2 -->
+      <div class="photo-item">
+        <img src="https://raw.githubusercontent.com/srinjayghosh03/srinjay-portfolio/main/images/Screenshot%202025-05-03%20000312.png" alt="Activity 3" class="photo-img w-full h-auto rounded-lg shadow-md" />
+        <h3 class="text-2xl font-semibold text-blue-600 mt-4">Activity 3: Serenity Over the Horizon</h3>
+        <p class="text-lg leading-relaxed mt-2">A tranquil sunset over the mountains, where the sky paints a masterpiece of oranges, pinks, and purples.</p>
+      </div>
+
+      <!-- Photo 3 -->
+      <div class="photo-item">
+        <img src="https://raw.githubusercontent.com/srinjayghosh03/srinjay-portfolio/main/images/Screenshot%202025-05-03%20000244.png" alt="Activity 4" class="photo-img w-full h-auto rounded-lg shadow-md" />
+        <h3 class="text-2xl font-semibold text-blue-600 mt-4">Activity 4: Urban Reflections</h3>
+        <p class="text-lg leading-relaxed mt-2">The city comes alive in this shot, with glass buildings reflecting the chaos and beauty of urban life.</p>
+      </div>
+
+      <!-- Photo 4 -->
+      <div class="photo-item">
+        <img src="https://raw.githubusercontent.com/srinjayghosh03/srinjay-portfolio/main/images/Screenshot%202025-05-03%20000226.png" alt="Activity 5" class="photo-img w-full h-auto rounded-lg shadow-md" />
+        <h3 class="text-2xl font-semibold text-blue-600 mt-4">Activity 5: Nature's Embrace</h3>
+        <p class="text-lg leading-relaxed mt-2">A serene moment in the forest, where the sunlight filters through the leaves, creating a magical glow.</p>
+      </div>
+
+      <!-- Photo 5 -->
+      <div class="photo-item">
+        <img src="https://raw.githubusercontent.com/srinjayghosh03/srinjay-portfolio/main/images/Screenshot%202025-05-03%20000205.png" alt="Activity 6" class="photo-img w-full h-auto rounded-lg shadow-md" />
+        <h3 class="text-2xl font-semibold text-blue-600 mt-4">Activity 6: The Quiet Village</h3>
+        <p class="text-lg leading-relaxed mt-2">A quaint village scene, capturing the simplicity and peace of rural life under a vast, open sky.</p>
+      </div>
+
+      <!-- Photo 6 -->
+      <div class="photo-item">
+        <img src="https://raw.githubusercontent.com/srinjayghosh03/srinjay-portfolio/main/images/Screenshot%202025-05-03%20000140.png" alt="Activity 7" class="photo-img w-full h-auto rounded-lg shadow-md" />
+        <h3 class="text-2xl font-semibold text-blue-600 mt-4">Activity 7: Morning Dew</h3>
+        <p class="text-lg leading-relaxed mt-2">Close-up of fresh morning dew on grass, reflecting the first light of dawn in tiny, perfect droplets.</p>
+      </div>
+
+      <!-- Photo 7 -->
+      <div class="photo-item">
+        <img src="https://raw.githubusercontent.com/srinjayghosh03/srinjay-portfolio/main/images/Screenshot%202025-05-03%20000104.png" alt="Activity 8" class="photo-img w-full h-auto rounded-lg shadow-md" />
+        <h3 class="text-2xl font-semibold text-blue-600 mt-4">Activity 8: Street Stories</h3>
+        <p class="text-lg leading-relaxed mt-2">A candid shot of a bustling street market, filled with stories of vendors, shoppers, and daily life.</p>
+      </div>
+
+      <!-- Photo 8 -->
+      <div class="photo-item">
+        <img src="https://raw.githubusercontent.com/srinjayghosh03/srinjay-portfolio/main/images/Screenshot%202025-05-03%20000047.png" alt="Activity 9" class="photo-img w-full h-auto rounded-lg shadow-md" />
+        <h3 class="text-2xl font-semibold text-blue-600 mt-4">Activity 9: Ocean Whispers</h3>
+        <p class="text-lg leading-relaxed mt-2">The ocean waves crash gently on the shore, whispering tales of the deep in this calming seascape.</p>
       </div>
     </div>
   </section>
@@ -96,5 +112,21 @@
     <p>© 2025 Srinjay Ghosh | <a href="mailto:srinjayghosh.03@gmail.com" class="underline hover:text-yellow-300">srinjayghosh.03@gmail.com</a></p>
     <a href="index.html" class="inline-block mt-4 px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-200">Home</a>
   </footer>
+
+  <!-- JavaScript for Scroll Animation -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const items = document.querySelectorAll('.photo-item');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1 });
+
+      items.forEach(item => observer.observe(item));
+    });
+  </script>
 </body>
 </html>
