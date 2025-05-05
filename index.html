@@ -1,174 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Srinjay's Portfolio</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-        }
-        nav {
-            background-color: #333;
-            padding: 1rem;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        nav ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-        }
-        nav ul li {
-            margin: 0 1.5rem;
-        }
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1rem;
-        }
-        nav ul li a:hover {
-            color: #ddd;
-        }
-        .hero {
-            background: linear-gradient(to right, #4b79a1, #283e51);
-            color: white;
-            text-align: center;
-            padding: 5rem 1rem;
-            min-height: 60vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            background-size: cover;
-            background-position: center;
-        }
-        .hero h1 {
-            font-size: 3rem;
-            margin: 0;
-        }
-        .hero p {
-            font-size: 1.5rem;
-            margin: 1rem 0;
-        }
-        .hero .cta {
-            display: inline-block;
-            padding: 0.8rem 1.5rem;
-            background-color: #ff6f61;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            margin-top: 1rem;
-        }
-        .hero .cta:hover {
-            background-color: #e55a50;
-        }
-        .about-section {
-            max-width: 800px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-            text-align: center;
-            display: none; /* Hidden by default */
-        }
-        .about-section.active {
-            display: block; /* Shown when active */
-        }
-        .about-section h2 {
-            color: #333;
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-        .profile-img {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin: 1rem auto;
-            display: block;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        }
-        .about-section p {
-            margin: 1rem 0;
-            color: #555;
-            font-size: 1.1rem;
-            text-align: left;
-        }
-        .skills {
-            margin-top: 2rem;
-        }
-        .skills h3 {
-            color: #333;
-            font-size: 1.8rem;
-            margin-bottom: 0.5rem;
-        }
-        .skills ul {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            justify-content: center;
-        }
-        .skills ul li {
-            background-color: #e0e0e0;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            font-size: 0.9rem;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Me - Srinjay Ghosh</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+    .gradient-bg {
+      background: linear-gradient(to bottom right, #1e3a8a, #3b82f6);
+    }
+  </style>
 </head>
-<body>
-    <nav>
-        <ul>
-        
-            <li><a href="#" onclick="toggleAbout()">HOME</a></li>
-            <li><a href="projects.html">Projects</a></li>
-            <li><a href="photography.html">Photography</a></li>
-             <li><a href="certificate.html">Certificates</a></li>
-             <li><a href="about.html">Discover Me</a></li>
-            <li><a href="FINALRESUME.pdf" target="_blank">RESUME</a></li>
+<body class="text-white gradient-bg min-h-screen">
 
-        </ul>
-    </nav>
-    <div class="hero">
-        <h1>Srinjay Ghosh</h1>
-        <p>Developer, Filmmaker, Explorer</p>
-        <a href="#about" onclick="toggleAbout()" class="cta">Home</a>
+  <!-- Header -->
+  <header class="p-6 flex justify-between items-center bg-opacity-20 backdrop-blur-lg shadow-md">
+    <h1 class="text-3xl font-bold">Srinjay Ghosh</h1>
+    <nav class="space-x-6">
+        </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="p-10 text-center">
+    <h2 class="text-4xl md:text-5xl font-bold mb-4">Programmer. Photographer. Explorer.</h2>
+    <p class="text-xl max-w-3xl mx-auto">Blending code, creativity, and curiosity to build a meaningful life through technology and travel.</p>
+  </section>
+
+  <!-- About Me -->
+  <section class="bg-white text-gray-800 rounded-t-3xl p-10 md:p-16 shadow-2xl">
+    <div class="max-w-5xl mx-auto space-y-8">
+      
+      <div>
+        <h3 class="text-3xl font-semibold text-blue-600 mb-2">Who Am I?</h3>
+        <p class="text-lg leading-relaxed">
+          I’m a Fourth-year B.Tech student at KIIT with a passion for programming, web development, and building digital experiences that matter. I specialize in Python, Java, and full-stack web development, and I love creating clean, intuitive, and dynamic applications.
+        </p>
+      </div>
+
+      <div>
+        <h3 class="text-3xl font-semibold text-blue-600 mb-2">My Journey Through Code</h3>
+        <p class="text-lg leading-relaxed">
+          From interning at my university’s digital team to consulting at Shine Projects, my experience has spanned digital media, marketing, and development. I thrive where logic meets design, where lines of code become tools to communicate, solve, and inspire.
+        </p>
+      </div>
+
+      <div>
+        <h3 class="text-3xl font-semibold text-blue-600 mb-2">A Lens on the World</h3>
+        <p class="text-lg leading-relaxed">
+          Photography is my way of freezing time. From sunrises in the mountains to vibrant city streets, I capture the world as I see it — vivid, emotional, and alive. My camera is my second language, helping me express what words often can’t.
+        </p>
+      </div>
+
+      <div>
+        <h3 class="text-3xl font-semibold text-blue-600 mb-2">Why I Travel</h3>
+        <p class="text-lg leading-relaxed">
+          Travel is more than passion — it’s purpose. It grounds me, inspires me, and fuels my creativity. Mountains, especially, are my soul’s home. One day, I dream of building tech remotely from a cabin in the hills, combining my digital and adventurous sides.
+        </p>
+      </div>
+
+      <div>
+        <h3 class="text-3xl font-semibold text-blue-600 mb-2">Vision Forward</h3>
+        <p class="text-lg leading-relaxed">
+          I’m working toward a future where I can bridge technology, design, and storytelling. Whether it's a startup, a digital agency, or my own venture — I want to create meaningful digital experiences that help people connect, discover, and dream.
+        </p>
+      </div>
     </div>
-    <div class="about-section" id="about">
-        <h2>About Me</h2>
-        <img src="images/srinjay.jpg" alt="Srinjay Ghosh" class="profile-img">
-        <p>Hello, I'm Srinjay Ghosh, a third-year B.Tech student at KIIT University, passionate about programming, filmmaking, and travel. Hailing from Bengal, I blend creativity and technology to build innovative solutions and tell compelling stories.</p>
-        <p>As a programmer, I specialize in Python, Java, and web development (HTML, CSS, JavaScript, React). I’ve built responsive websites, data visualization tools, and managed digital campaigns, thriving on solving complex problems. My internships at KIIT University’s digital team and Shine Projects, Hyderabad, honed my skills in media management, marketing analytics, and project optimization.</p>
-        <p>Beyond coding, I’m a filmmaker and photographer, capturing landscapes and urban scenes through my lens. I create short films, experimenting with video editing and color grading to evoke emotions. Travel fuels my inspiration—I dream of exploring mountains worldwide, with a recent trip to Kinnaur Valley sparking my creativity.</p>
-        <p>I’m driven by curiosity and a desire to learn, constantly working on projects that merge my technical and artistic passions. Explore my portfolio to see my work, and join me on this journey of creation and discovery!</p>
-        <div class="skills">
-            <h3>Skills</h3>
-            <ul>
-                <li>Python</li>
-                <li>Java</li>
-                <li>JavaScript</li>
-                <li>HTML</li>
-                <li>CSS</li>
-                <li>React</li>
-                <li>Git</li>
-                <li>Video Editing</li>
-                <li>Photography</li>
-            </ul>
-        </div>
-    </div>
-    <script>
-        function toggleAbout() {
-            const aboutSection = document.getElementById('about');
-            aboutSection.classList.toggle('active');
-        }
-    </script>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center p-6 text-sm bg-opacity-10 backdrop-blur-md">
+    <p>&copy; 2025 Srinjay Ghosh | <a href="mailto:srinjayghosh.03@gmail.com" class="underline hover:text-yellow-300">srinjayghosh.03@gmail.com</a></p>
+  </footer>
+  
 </body>
 </html>
