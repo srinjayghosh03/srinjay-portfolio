@@ -6,29 +6,19 @@
   <title>Srinjay Ghosh | Portfolio</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
   <style>
     body {
       font-family: 'Poppins', sans-serif;
+      margin: 0;
+      overflow-x: hidden;
     }
-    .section-border {
-      border: 2px solid #3b82f6;
-      border-radius: 12px;
-      padding: 20px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    h1, h2, h3, h4 {
+      font-family: 'Montserrat', sans-serif;
     }
-    .section-border:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
-    }
-    .certificate-card {
-      transition: all 0.3s ease;
-    }
-    .certificate-card:hover {
-      background-color: #e5e7eb;
-      transform: scale(1.02);
-    }
+    /* Section Animation */
     .fade-in {
       opacity: 0;
       transform: translateY(20px);
@@ -38,23 +28,78 @@
       opacity: 1;
       transform: translateY(0);
     }
+    /* Hero Section with Gradient and Parallax */
     .hero-bg {
-      background: url('https://www.transparenttextures.com/patterns/subtle-white-feathers.png'), #dbeafe;
+      background: linear-gradient(135deg, #6b7280 0%, #3b82f6 50%, #f472b6 100%), url('https://www.transparenttextures.com/patterns/subtle-white-feathers.png');
+      background-attachment: fixed;
+      background-size: cover;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
     }
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.3);
+      z-index: -1;
+    }
+    #particles-js {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 0;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+    /* Profile Image Styling */
+    .profile-img {
+      border: 3px solid transparent;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 15px rgba(255, 111, 97, 0.5);
+    }
+    .profile-img:hover {
+      border-image: linear-gradient(to right, #ff6f61, #f472b6) 1;
+      box-shadow: 0 0 20px rgba(244, 114, 182, 0.7);
+      transform: scale(1.05);
+    }
+    /* Progress Bar with Gradient */
     .progress-bar {
       position: fixed;
       top: 0;
       left: 0;
-      height: 4px;
-      background: #3b82f6;
+      height: 5px;
+      background: linear-gradient(to right, #ff6f61, #f472b6);
       width: 0%;
       z-index: 50;
       transition: width 0.3s ease;
     }
-    .nav-shadow {
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      transition: box-shadow 0.3s ease;
+    /* Navigation Link Hover Effect */
+    .nav-link {
+      position: relative;
     }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background: #f472b6;
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    /* Dark Mode Styling */
     .dark-mode {
       background: #1f2937;
       color: #e5e7eb;
@@ -71,6 +116,12 @@
     .dark-mode .bg-blue-900 {
       background: #1e40af;
     }
+    .dark-mode .text-blue-800 {
+      color: #60a5fa;
+    }
+    .dark-mode .text-blue-700 {
+      color: #60a5fa;
+    }
     .dark-mode .certificate-card {
       background: #4b5563;
     }
@@ -78,25 +129,105 @@
       background: #6b7280;
     }
     .dark-mode .section-border {
-      border-color: #60a5fa;
+      border-image: linear-gradient(to right, #1e40af, #60a5fa) 1;
     }
     .dark-mode .hero-bg {
-      background: url('https://www.transparenttextures.com/patterns/subtle-white-feathers.png'), #1e3a8a;
+      background: linear-gradient(135deg, #374151 0%, #1e40af 50%, #831843 100%), url('https://www.transparenttextures.com/patterns/subtle-white-feathers.png');
     }
+    /* Back to Top Button with Glow */
     #back-to-top {
       position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #3b82f6;
+      bottom: 30px;
+      right: 30px;
+      background: #ff6f61;
       color: white;
-      padding: 10px 15px;
+      padding: 12px 18px;
       border-radius: 50%;
       display: none;
       z-index: 50;
-      transition: opacity 0.3s ease;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 15px rgba(255, 111, 97, 0.5);
+    }
+    .nav-shadow {
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: box-shadow 0.3s ease;
     }
     #back-to-top:hover {
-      background: #2563eb;
+      background: #f472b6;
+      box-shadow: 0 0 20px rgba(244, 114, 182, 0.7);
+      transform: scale(1.1);
+    }
+    /* Title Animation */
+    .title-anim {
+      opacity: 0;
+      transform: scale(0.95);
+      animation: titleFadeIn 1s ease forwards;
+    }
+    @keyframes titleFadeIn {
+      0% { opacity: 0; transform: scale(0.95); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+    /* Section Border Styling */
+    .section-border {
+      border: 2px solid transparent;
+      border-radius: 16px;
+      padding: 20px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.95);
+    }
+    .section-border::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://www.transparenttextures.com/patterns/light-wool.png');
+      opacity: 0.1;
+      z-index: -1;
+    }
+    .section-border:hover {
+      border-image: linear-gradient(to right, #ff6f61, #f472b6) 1;
+      box-shadow: 0 10px 20px rgba(244, 114, 182, 0.3);
+      transform: translateY(-5px);
+    }
+    /* Certificate Card Styling */
+    .certificate-card {
+      background: rgba(255, 255, 255, 0.95);
+      border: 2px solid transparent;
+      border-radius: 12px;
+      padding: 16px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .certificate-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://www.transparenttextures.com/patterns/light-wool.png');
+      opacity: 0.1;
+      z-index: -1;
+    }
+    .certificate-card:hover {
+      border-image: linear-gradient(to right, #ff6f61, #f472b6) 1;
+      box-shadow: 0 5px 15px rgba(244, 114, 182, 0.2);
+      transform: scale(1.02);
+    }
+    /* Glowing Button Effect */
+    .glow-btn {
+      box-shadow: 0 0 15px rgba(255, 111, 97, 0.5);
+      transition: all 0.3s ease;
+    }
+    .glow-btn:hover {
+      box-shadow: 0 0 25px rgba(244, 114, 182, 0.7);
+      background: #f472b6;
+      color: white;
     }
   </style>
 </head>
@@ -106,7 +237,7 @@
 
   <!-- Initial Click to Open Screen -->
   <div id="intro-screen" class="fixed inset-0 flex items-center justify-center bg-blue-900 z-50">
-    <button id="open-portfolio" class="px-8 py-4 bg-yellow-400 text-blue-900 text-xl font-semibold rounded-full hover:bg-yellow-300 transition duration-300">
+    <button id="open-portfolio" class="px-8 py-4 bg-yellow-400 text-blue-900 text-xl font-semibold rounded-full hover:bg-yellow-300 transition duration-300 glow-btn">
       Click to Open Portfolio
     </button>
   </div>
@@ -115,22 +246,25 @@
   <div id="portfolio-content" class="hidden">
     <!-- Header -->
     <header id="header" class="p-6 flex justify-between items-center bg-blue-900 text-white sticky top-0 z-40">
-      <h1 class="text-2xl font-bold">Srinjay Ghosh</h1>
+      <h1 class="text-2xl font-bold text-yellow-300">Srinjay Ghosh</h1>
       <nav class="space-x-6 text-lg font-medium">
-        <a href="#home" class="hover:text-yellow-300 transition duration-200 smooth-scroll">Home</a>
-        <a href="photography.html" class="hover:text-yellow-300 transition duration-200">Photography</a>
-        <a href="projects.html" class="hover:text-yellow-300 transition duration-200">Projects</a>
-        <a href="internship.html" class="hover:text-yellow-300 transition duration-200">Internship</a>
-        <a href="FINALRESUME.pdf" class="hover:text-yellow-300 transition duration-200">Resume</a>
+        <a href="#home" class="nav-link hover:text-yellow-300 transition duration-200 smooth-scroll">Home</a>
+        <a href="photography.html" class="nav-link hover:text-yellow-300 transition duration-200">Photography</a>
+        <a href="projects.html" class="nav-link hover:text-yellow-300 transition duration-200">Projects</a>
+        <a href="internship.html" class="nav-link hover:text-yellow-300 transition duration-200">Internship</a>
+        <a href="FINALRESUME.pdf" class="nav-link hover:text-yellow-300 transition duration-200">Resume</a>
         <button id="dark-mode-toggle" class="hover:text-yellow-300 transition duration-200">🌙</button>
       </nav>
     </header>
 
-    <!-- Hero Section with Profile Image -->
+    <!-- Hero Section -->
     <section id="home" class="hero-bg p-10 text-center">
-      <h2 class="text-5xl md:text-6xl font-bold mb-4 text-blue-800">Srinjay Ghosh</h2>
-      <img src="images/srinjay.jpg" alt="Srinjay Ghosh Profile Picture" class="w-32 h-32 md:w-40 md:h-40 rounded-full mx-auto mb-4 border-4 border-blue-600 hover:scale-105 transition duration-300">
-      <p id="typed-text" class="text-xl max-w-3xl mx-auto text-gray-700"></p>
+      <div id="particles-js"></div>
+      <div class="hero-content">
+        <h2 class="text-5xl md:text-6xl font-bold mb-4 text-white title-anim">Srinjay Ghosh</h2>
+        <img src="images/srinjay.jpg" alt="Srinjay Ghosh Profile Picture" class="profile-img w-32 h-32 md:w-40 md:h-40 rounded-full mx-auto mb-4">
+        <p id="typed-text" class="text-xl max-w-3xl mx-auto text-yellow-200"></p>
+      </div>
     </section>
 
     <!-- Discover Me Section -->
@@ -176,7 +310,7 @@
           <h3 class="text-3xl font-semibold text-blue-700 mb-4 cursor-pointer" onclick="toggleCertificates()">Certificates <span id="toggle-icon" class="inline-block ml-2">▼</span></h3>
           <div id="certificates-list" class="space-y-6 hidden">
             <!-- Certificate 1 -->
-            <div class="certificate-card bg-gray-200 rounded-lg p-4">
+            <div class="certificate-card">
               <h4 class="text-xl font-semibold text-blue-700 mb-2">Project Management Skills for Leaders</h4>
               <p class="text-gray-700 mb-2">Completed on May 14, 2024 at 06:57 AM UTC</p>
               <p class="text-gray-700 mb-2"><strong>Issuer:</strong> LinkedIn Learning</p>
@@ -185,7 +319,7 @@
             </div>
 
             <!-- Certificate 2 -->
-            <div class="certificate-card bg-gray-200 rounded-lg p-4">
+            <div class="certificate-card">
               <h4 class="text-xl font-semibold text-blue-700 mb-2">Online Marketing Internship</h4>
               <p class="text-gray-700 mb-2">Completed on May 21, 2024</p>
               <p class="text-gray-700 mb-2"><strong>Issuer:</strong> Internshala, in collaboration with KIIT University, Bhubaneswar</p>
@@ -193,7 +327,7 @@
             </div>
 
             <!-- Certificate 3 -->
-            <div class="certificate-card bg-gray-200 rounded-lg p-4">
+            <div class="certificate-card">
               <h4 class="text-xl font-semibold text-blue-700 mb-2">Premiere Pro Essential Training (2022-2024)</h4>
               <p class="text-gray-700 mb-2">Completed on May 14, 2024 at 11:22 AM UTC (6 hours 38 minutes)</p>
               <p class="text-gray-700 mb-2"><strong>Issuer:</strong> LinkedIn Learning</p>
@@ -202,7 +336,7 @@
             </div>
 
             <!-- Certificate 4 -->
-            <div class="certificate-card bg-gray-200 rounded-lg p-4">
+            <div class="certificate-card">
               <h4 class="text-xl font-semibold text-blue-700 mb-2">Financial Markets Training</h4>
               <p class="text-gray-700 mb-2">Completed on June 15, 2024</p>
               <p class="text-gray-700 mb-2"><strong>Issuer:</strong> Shine Projects</p>
@@ -211,7 +345,7 @@
             </div>
 
             <!-- Certificate 5 -->
-            <div class="certificate-card bg-gray-200 rounded-lg p-4">
+            <div class="certificate-card">
               <h4 class="text-xl font-semibold text-blue-700 mb-2">Health Systems Development: Introduction to Health Systems</h4>
               <p class="text-gray-700 mb-2">Completed on January 1, 2025</p>
               <p class="text-gray-700 mb-2"><strong>Issuer:</strong> Imperial College London, offered through Coursera</p>
@@ -220,7 +354,7 @@
             </div>
 
             <!-- Certificate 6 -->
-            <div class="certificate-card bg-gray-200 rounded-lg p-4">
+            <div class="certificate-card">
               <h4 class="text-xl font-semibold text-blue-700 mb-2">Advance Your After Effects Skills</h4>
               <p class="text-gray-700 mb-2">Completed on May 27, 2024 at 07:20 PM UTC (18 hours 50 minutes)</p>
               <p class="text-gray-700 mb-2"><strong>Issuer:</strong> LinkedIn Learning</p>
@@ -229,7 +363,7 @@
             </div>
 
             <!-- Certificate 7 -->
-            <div class="certificate-card bg-gray-200 rounded-lg p-4">
+            <div class="certificate-card">
               <h4 class="text-xl font-semibold text-blue-700 mb-2">Health Systems Development: Health Systems, Policy and Research</h4>
               <p class="text-gray-700 mb-2">Completed on January 7, 2025</p>
               <p class="text-gray-700 mb-2"><strong>Issuer:</strong> Imperial College London, offered through Coursera</p>
@@ -238,7 +372,7 @@
             </div>
 
             <!-- Certificate 8 -->
-            <div class="certificate-card bg-gray-200 rounded-lg p-4">
+            <div class="certificate-card">
               <h4 class="text-xl font-semibold text-blue-700 mb-2">Certificate of Appreciation - INNOWAVE 2.0</h4>
               <p class="text-gray-700 mb-2">Awarded on January 18, 2025</p>
               <p class="text-gray-700 mb-2"><strong>Issuer:</strong> Team Broadcasting, INNOWAVE 2.0, KIIT University, Bhubaneswar</p>
@@ -246,7 +380,7 @@
             </div>
 
             <!-- Certificate 9 -->
-            <div class="certificate-card bg-gray-200 rounded-lg p-4">
+            <div class="certificate-card">
               <h4 class="text-xl font-semibold text-blue-700 mb-2">Certificate of Acknowledgement - TEDxKIITUniversity</h4>
               <p class="text-gray-700 mb-2">Awarded on August 10, 2024</p>
               <p class="text-gray-700 mb-2"><strong>Issuer:</strong> TEDxKIITUniversity, Kalinga Institute of Industrial Technology, Bhubaneswar</p>
@@ -254,7 +388,7 @@
             </div>
 
             <!-- Certificate 10 -->
-            <div class="certificate-card bg-gray-200 rounded-lg p-4">
+            <div class="certificate-card">
               <h4 class="text-xl font-semibold text-blue-700 mb-2">Certificate of Appreciation - KIIT FEST 8.0</h4>
               <p class="text-gray-700 mb-2">Awarded on February 14-16, 2025</p>
               <p class="text-gray-700 mb-2"><strong>Issuer:</strong> KIIT Deemed to be University, Bhubaneswar</p>
@@ -267,8 +401,8 @@
 
     <!-- Footer -->
     <footer class="text-center p-6 bg-blue-900 text-white mt-10">
-      <p class="mb-2">© 2025 Srinjay Ghosh | <a href="mailto:srinjayghosh.03@gmail.com" class="underline hover:text-yellow-300">srinjayghosh.03@gmail.com</a></p>
-      <a href="about.html" class="inline-block mt-2 bg-yellow-400 text-blue-900 px-4 py-2 rounded-full font-semibold hover:bg-yellow-300 transition duration-200">
+      <p class="mb-2 text-lg">© 2025 Srinjay Ghosh | <a href="mailto:srinjayghosh.03@gmail.com" class="underline hover:text-yellow-300">srinjayghosh.03@gmail.com</a></p>
+      <a href="about.html" class="inline-block mt-2 glow-btn bg-yellow-400 text-blue-900 px-4 py-2 rounded-full font-semibold transition duration-200">
         Know About Me
       </a>
     </footer>
@@ -296,6 +430,25 @@
       backSpeed: 30,
       backDelay: 1000,
       loop: true
+    });
+
+    // Particles.js for hero section
+    particlesJS('particles-js', {
+      particles: {
+        number: { value: 60, density: { enable: true, value_area: 800 } },
+        color: { value: '#ffffff' },
+        shape: { type: 'circle' },
+        opacity: { value: 0.5, random: true },
+        size: { value: 3, random: true },
+        line_linked: { enable: false },
+        move: { enable: true, speed: 2, direction: 'none', random: true }
+      },
+      interactivity: {
+        detect_on: 'canvas',
+        events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' } },
+        modes: { repulse: { distance: 100, duration: 0.4 }, push: { particles_nb: 4 } }
+      },
+      retina_detect: true
     });
 
     // Smooth scroll for navigation links
