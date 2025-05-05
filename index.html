@@ -8,27 +8,52 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
   <style>
     body {
       font-family: 'Poppins', sans-serif;
+      overflow-x: hidden;
+      margin: 0;
     }
+    /* Section Border Animation */
     .section-border {
       border: 2px solid #3b82f6;
       border-radius: 12px;
       padding: 20px;
+      position: relative;
+      overflow: hidden;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .section-border::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.2), transparent);
+      transition: 0.5s;
+    }
+    .section-border:hover::before {
+      left: 100%;
     }
     .section-border:hover {
       transform: translateY(-5px);
       box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
     }
+    /* Certificate Card Animation */
     .certificate-card {
       transition: all 0.3s ease;
+      position: relative;
     }
     .certificate-card:hover {
       background-color: #e5e7eb;
-      transform: scale(1.02);
+      transform: scale(1.02) rotate(1deg);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     }
+    /* Fade-In Animation */
     .fade-in {
       opacity: 0;
       transform: translateY(20px);
@@ -38,9 +63,19 @@
       opacity: 1;
       transform: translateY(0);
     }
+    /* Hero Section Parallax */
     .hero-bg {
       background: url('https://www.transparenttextures.com/patterns/subtle-white-feathers.png'), #dbeafe;
+      background-attachment: fixed;
+      background-size: cover;
+      position: relative;
+      overflow: hidden;
+      min-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
+    /* Progress Bar */
     .progress-bar {
       position: fixed;
       top: 0;
@@ -51,10 +86,12 @@
       z-index: 50;
       transition: width 0.3s ease;
     }
+    /* Nav Shadow */
     .nav-shadow {
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       transition: box-shadow 0.3s ease;
     }
+    /* Dark Mode */
     .dark-mode {
       background: #1f2937;
       color: #e5e7eb;
@@ -83,6 +120,7 @@
     .dark-mode .hero-bg {
       background: url('https://www.transparenttextures.com/patterns/subtle-white-feathers.png'), #1e3a8a;
     }
+    /* Back to Top Button */
     #back-to-top {
       position: fixed;
       bottom: 20px;
@@ -93,10 +131,107 @@
       border-radius: 50%;
       display: none;
       z-index: 50;
-      transition: opacity 0.3s ease;
+      transition: opacity 0.3s ease, transform 0.3s ease;
     }
     #back-to-top:hover {
       background: #2563eb;
+      transform: scale(1.1);
+    }
+    /* Custom Cursor */
+    .custom-cursor {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      background: rgba(59, 130, 246, 0.5);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 1000;
+      transition: transform 0.2s ease;
+    }
+    .custom-cursor.trail {
+      width: 10px;
+      height: 10px;
+      opacity: 0.3;
+    }
+    /* Loading Animation */
+    .loader {
+      display: flex;
+      gap: 10px;
+    }
+    .loader div {
+      width: 15px;
+      height: 15px;
+      background: #facc15;
+      border-radius: 50%;
+      animation: bounce 0.6s infinite alternate;
+    }
+    .loader div:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+    .loader div:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+    @keyframes bounce {
+      to {
+        transform: translateY(-15px);
+      }
+    }
+    /* Particle Canvas */
+    #particles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+    /* Contact Form Styling */
+    .contact-form input, .contact-form textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #3b82f6;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.9);
+      color: #1f2937;
+      transition: border-color 0.3s ease, transform 0.3s ease;
+    }
+    .dark-mode .contact-form input, .dark-mode .contact-form textarea {
+      color: #e5e7eb;
+      background: rgba(255, 255, 255, 0.2);
+    }
+    .contact-form input:focus, .contact-form textarea:focus {
+      border-color: #2563eb;
+      transform: scale(1.02);
+      outline: none;
+    }
+    .contact-form button {
+      width: 100%;
+      padding: 10px;
+      background: #3b82f6;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+    .contact-form button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: 0.5s;
+    }
+    .contact-form button:hover::before {
+      left: 100%;
+    }
+    .contact-form button:hover {
+      transform: translateY(-2px);
     }
   </style>
 </head>
@@ -104,32 +239,60 @@
   <!-- Progress Bar -->
   <div class="progress-bar" id="progress-bar"></div>
 
-  <!-- Initial Click to Open Screen -->
-  <div id="intro-screen" class="fixed inset-0 flex items-center justify-center bg-blue-900 z-50">
-    <button id="open-portfolio" class="px-8 py-4 bg-yellow-400 text-blue-900 text-xl font-semibold rounded-full hover:bg-yellow-300 transition duration-300">
-      Click to Open Portfolio
-    </button>
+  <!-- Loading Screen -->
+  <div id="intro-screen" class="fixed inset-0 flex flex-col items-center justify-center bg-blue-900 z-50 transition-opacity duration-500">
+    <h2 class="text-3xl font-bold text-white mb-4">Srinjay Ghosh</h2>
+    <div class="loader">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
   </div>
 
+  <!-- Custom Cursor -->
+  <div class="custom-cursor" id="cursor"></div>
+  <div class="custom-cursor trail" id="trail1"></div>
+  <div class="custom-cursor trail" id="trail2"></div>
+
   <!-- Main Portfolio Content -->
-  <div id="portfolio-content" class="hidden">
+  <div id="portfolio-content" style="display: none;">
     <!-- Header -->
     <header id="header" class="p-6 flex justify-between items-center bg-blue-900 text-white sticky top-0 z-40">
       <h1 class="text-2xl font-bold">Srinjay Ghosh</h1>
       <nav class="space-x-6 text-lg font-medium">
-        <a href="#home" class="hover:text-yellow-300 transition duration-200 smooth-scroll">Home</a>
-        <a href="photography.html" class="hover:text-yellow-300 transition duration-200">Photography</a>
-        <a href="projects.html" class="hover:text-yellow-300 transition duration-200">Projects</a>
-        <a href="internship.html" class="hover:text-yellow-300 transition duration-200">Internship</a>
-        <a href="FINALRESUME.pdf" class="hover:text-yellow-300 transition duration-200">Resume</a>
+        <a href="#home" class="hover:text-yellow-300 transition duration-200 smooth-scroll relative group">
+          Home
+          <span class="absolute bottom-0 left-0 w-0 h-1 bg-yellow-300 transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        <a href="photography.html" class="hover:text-yellow-300 transition duration-200 relative group">
+          Photography
+          <span class="absolute bottom-0 left-0 w-0 h-1 bg-yellow-300 transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        <a href="projects.html" class="hover:text-yellow-300 transition duration-200 relative group">
+          Projects
+          <span class="absolute bottom-0 left-0 w-0 h-1 bg-yellow-300 transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        <a href="internship.html" class="hover:text-yellow-300 transition duration-200 relative group">
+          Internship
+          <span class="absolute bottom-0 left-0 w-0 h-1 bg-yellow-300 transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        <a href="FINALRESUME.pdf" class="hover:text-yellow-300 transition duration-200 relative group">
+          Resume
+          <span class="absolute bottom-0 left-0 w-0 h-1 bg-yellow-300 transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        <a href="#contact" class="hover:text-yellow-300 transition duration-200 relative group">
+          Contact
+          <span class="absolute bottom-0 left-0 w-0 h-1 bg-yellow-300 transition-all duration-300 group-hover:w-full"></span>
+        </a>
         <button id="dark-mode-toggle" class="hover:text-yellow-300 transition duration-200">🌙</button>
       </nav>
     </header>
 
-    <!-- Hero Section with Profile Image -->
-    <section id="home" class="hero-bg p-10 text-center">
-      <h2 class="text-5xl md:text-6xl font-bold mb-4 text-blue-800">Srinjay Ghosh</h2>
-      <img src="images/srinjay.jpg" alt="Srinjay Ghosh Profile Picture" class="w-32 h-32 md:w-40 md:h-40 rounded-full mx-auto mb-4 border-4 border-blue-600 hover:scale-105 transition duration-300">
+    <!-- Hero Section with Particles -->
+    <section id="home" class="hero-bg p-10 text-center relative">
+      <canvas id="particles"></canvas>
+      <h2 class="text-5xl md:text-6xl font-bold mb-4 text-blue-800" id="hero-title">Srinjay Ghosh</h2>
+      <img src="images/srinjay.jpg" alt="Srinjay Ghosh Profile Picture" class="w-32 h-32 md:w-40 md:h-40 rounded-full mx-auto mb-4 border-4 border-blue-600 hover:scale-105 transition duration-300" id="profile-img" onerror="this.src='https://via.placeholder.com/150';">
       <p id="typed-text" class="text-xl max-w-3xl mx-auto text-gray-700"></p>
     </section>
 
@@ -171,7 +334,7 @@
           </p>
         </div>
 
-        <!-- Certificates Section with Click to Expand -->
+        <!-- Certificates Section -->
         <div id="certificates" class="fade-in section-border">
           <h3 class="text-3xl font-semibold text-blue-700 mb-4 cursor-pointer" onclick="toggleCertificates()">Certificates <span id="toggle-icon" class="inline-block ml-2">▼</span></h3>
           <div id="certificates-list" class="space-y-6 hidden">
@@ -183,7 +346,6 @@
               <p class="text-gray-700 mb-2"><strong>Skills Covered:</strong> Project Management, Project Leadership</p>
               <p class="text-gray-700 mb-2"><strong>Details:</strong> A course recognized by the Project Management Institute (PMI) with an activity ID #41031EVY and 0.50 PDUs/contact hours.</p>
             </div>
-
             <!-- Certificate 2 -->
             <div class="certificate-card bg-gray-200 rounded-lg p-4">
               <h4 class="text-xl font-semibold text-blue-700 mb-2">Online Marketing Internship</h4>
@@ -191,7 +353,6 @@
               <p class="text-gray-700 mb-2"><strong>Issuer:</strong> Internshala, in collaboration with KIIT University, Bhubaneswar</p>
               <p class="text-gray-700 mb-2"><strong>Details:</strong> Successfully secured an online marketing internship at Anjor Foundation Trust through Internshala.</p>
             </div>
-
             <!-- Certificate 3 -->
             <div class="certificate-card bg-gray-200 rounded-lg p-4">
               <h4 class="text-xl font-semibold text-blue-700 mb-2">Premiere Pro Essential Training (2022-2024)</h4>
@@ -200,7 +361,6 @@
               <p class="text-gray-700 mb-2"><strong>Skills Covered:</strong> Adobe Premiere Pro</p>
               <p class="text-gray-700 mb-2"><strong>Details:</strong> A comprehensive training course focused on mastering Adobe Premiere Pro for video editing.</p>
             </div>
-
             <!-- Certificate 4 -->
             <div class="certificate-card bg-gray-200 rounded-lg p-4">
               <h4 class="text-xl font-semibold text-blue-700 mb-2">Financial Markets Training</h4>
@@ -209,7 +369,6 @@
               <p class="text-gray-700 mb-2"><strong>Skills Covered:</strong> Share Markets, Mutual Funds, Insurance, Banking Concepts</p>
               <p class="text-gray-700 mb-2"><strong>Details:</strong> A training course on financial markets, providing expertise in key financial concepts and practices.</p>
             </div>
-
             <!-- Certificate 5 -->
             <div class="certificate-card bg-gray-200 rounded-lg p-4">
               <h4 class="text-xl font-semibold text-blue-700 mb-2">Health Systems Development: Introduction to Health Systems</h4>
@@ -218,7 +377,6 @@
               <p class="text-gray-700 mb-2"><strong>Details:</strong> An online non-credit course introducing the fundamentals of health systems development.</p>
               <p class="text-gray-700 mb-2"><strong>Verification:</strong> <a href="https://coursera.org/verify/WJ3NMBRWFVY" class="text-blue-500 hover:underline">Verify Certificate</a></p>
             </div>
-
             <!-- Certificate 6 -->
             <div class="certificate-card bg-gray-200 rounded-lg p-4">
               <h4 class="text-xl font-semibold text-blue-700 mb-2">Advance Your After Effects Skills</h4>
@@ -227,7 +385,6 @@
               <p class="text-gray-700 mb-2"><strong>Skills Covered:</strong> After Effects</p>
               <p class="text-gray-700 mb-2"><strong>Details:</strong> A learning path focused on advanced techniques in Adobe After Effects for motion graphics and visual effects.</p>
             </div>
-
             <!-- Certificate 7 -->
             <div class="certificate-card bg-gray-200 rounded-lg p-4">
               <h4 class="text-xl font-semibold text-blue-700 mb-2">Health Systems Development: Health Systems, Policy and Research</h4>
@@ -236,7 +393,6 @@
               <p class="text-gray-700 mb-2"><strong>Details:</strong> An online non-credit course exploring health systems, policy, and research methodologies.</p>
               <p class="text-gray-700 mb-2"><strong>Verification:</strong> <a href="https://coursera.org/verify/WGHTT6C" class="text-blue-500 hover:underline">Verify Certificate</a></p>
             </div>
-
             <!-- Certificate 8 -->
             <div class="certificate-card bg-gray-200 rounded-lg p-4">
               <h4 class="text-xl font-semibold text-blue-700 mb-2">Certificate of Appreciation - INNOWAVE 2.0</h4>
@@ -244,7 +400,6 @@
               <p class="text-gray-700 mb-2"><strong>Issuer:</strong> Team Broadcasting, INNOWAVE 2.0, KIIT University, Bhubaneswar</p>
               <p class="text-gray-700 mb-2"><strong>Details:</strong> Recognized for dedication and contributions as an organizing committee member during INNOWAVE 2.0, an event focused on innovation.</p>
             </div>
-
             <!-- Certificate 9 -->
             <div class="certificate-card bg-gray-200 rounded-lg p-4">
               <h4 class="text-xl font-semibold text-blue-700 mb-2">Certificate of Acknowledgement - TEDxKIITUniversity</h4>
@@ -252,7 +407,6 @@
               <p class="text-gray-700 mb-2"><strong>Issuer:</strong> TEDxKIITUniversity, Kalinga Institute of Industrial Technology, Bhubaneswar</p>
               <p class="text-gray-700 mb-2"><strong>Details:</strong> Acknowledged for participation in the eighth edition of the TEDx conference themed "Pharos - The Guiding Light," focusing on innovation and ideas.</p>
             </div>
-
             <!-- Certificate 10 -->
             <div class="certificate-card bg-gray-200 rounded-lg p-4">
               <h4 class="text-xl font-semibold text-blue-700 mb-2">Certificate of Appreciation - KIIT FEST 8.0</h4>
@@ -261,6 +415,17 @@
               <p class="text-gray-700 mb-2"><strong>Details:</strong> Recognized for exceptional dedication and contributions as a vital member of the organizing committee for KIIT FEST 8.0, a major university event.</p>
             </div>
           </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div id="contact" class="fade-in section-border">
+          <h3 class="text-3xl font-semibold text-blue-700 mb-4">Get in Touch</h3>
+          <form id="contactForm" class="contact-form space-y-4">
+            <input type="text" id="name" placeholder="Your Name" required>
+            <input type="email" id="email" placeholder="Your Email" required>
+            <textarea id="message" placeholder="Your Message" rows="5" required></textarea>
+            <button type="submit">Send Message</button>
+          </form>
         </div>
       </div>
     </section>
@@ -279,26 +444,81 @@
 
   <!-- JavaScript for Interactivity -->
   <script>
-    // Show portfolio content on button click
-    document.getElementById('open-portfolio').addEventListener('click', () => {
-      document.getElementById('intro-screen').style.display = 'none';
-      const portfolioContent = document.getElementById('portfolio-content');
-      portfolioContent.classList.remove('hidden');
+    // Loading Screen
+    document.addEventListener('DOMContentLoaded', () => {
+      console.log('DOM fully loaded');
+      setTimeout(() => {
+        console.log('Hiding intro screen');
+        const introScreen = document.getElementById('intro-screen');
+        introScreen.style.opacity = '0';
+        setTimeout(() => {
+          introScreen.style.display = 'none';
+          console.log('Showing portfolio content');
+          document.getElementById('portfolio-content').style.display = 'block';
+          initAnimations();
+        }, 500);
+      }, 2000);
     });
 
-    // Typing animation for hero section
-    const typed = new Typed('#typed-text', {
-      strings: [
-        'Programmer. Photographer. Explorer.',
-        'Blending code, creativity, and curiosity.'
-      ],
-      typeSpeed: 50,
-      backSpeed: 30,
-      backDelay: 1000,
-      loop: true
-    });
+    // Initialize Animations
+    function initAnimations() {
+      try {
+        console.log('Initializing animations');
+        // Hero Section Animations
+        gsap.from('#hero-title', { duration: 1, y: -50, opacity: 0, ease: 'power2.out' });
+        gsap.from('#profile-img', { duration: 1, scale: 0, opacity: 0, delay: 0.5, ease: 'power2.out' });
+        gsap.from('#typed-text', { duration: 1, opacity: 0, delay: 1, ease: 'power2.out' });
 
-    // Smooth scroll for navigation links
+        // Section Animations
+        gsap.utils.toArray('.section-border').forEach((section, i) => {
+          gsap.from(section, {
+            scrollTrigger: {
+              trigger: section,
+              start: 'top 80%',
+              toggleActions: 'play none none none'
+            },
+            x: i % 2 === 0 ? -50 : 50,
+            opacity: 0,
+            duration: 0.8,
+            ease: 'power2.out'
+          });
+        });
+
+        // Certificate Cards
+        gsap.utils.toArray('.certificate-card').forEach(card => {
+          gsap.from(card, {
+            scrollTrigger: {
+              trigger: card,
+              start: 'top 90%'
+            },
+            scale: 0.9,
+            opacity: 0,
+            duration: 0.6,
+            ease: 'power2.out'
+          });
+        });
+      } catch (error) {
+        console.error('Animation initialization failed:', error);
+      }
+    }
+
+    // Typing Animation
+    try {
+      const typed = new Typed('#typed-text', {
+        strings: [
+          'Programmer. Photographer. Explorer.',
+          'Blending code, creativity, and curiosity.'
+        ],
+        typeSpeed: 50,
+        backSpeed: 30,
+        backDelay: 1000,
+        loop: true
+      });
+    } catch (error) {
+      console.error('Typed.js initialization failed:', error);
+    }
+
+    // Smooth Scroll
     document.querySelectorAll('.smooth-scroll').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -308,34 +528,25 @@
       });
     });
 
-    // Scroll animations for sections
-    document.addEventListener('DOMContentLoaded', () => {
-      const items = document.querySelectorAll('.fade-in');
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
-        });
-      }, { threshold: 0.1 });
-
-      items.forEach(item => observer.observe(item));
-    });
-
-    // Toggle certificates section
+    // Toggle Certificates
     function toggleCertificates() {
       const certificatesList = document.getElementById('certificates-list');
       const toggleIcon = document.getElementById('toggle-icon');
       if (certificatesList.classList.contains('hidden')) {
         certificatesList.classList.remove('hidden');
         toggleIcon.textContent = '▲';
+        try {
+          gsap.from('.certificate-card', { y: 20, opacity: 0, stagger: 0.1, duration: 0.5 });
+        } catch (error) {
+          console.error('Certificate animation failed:', error);
+        }
       } else {
         certificatesList.classList.add('hidden');
         toggleIcon.textContent = '▼';
       }
     }
 
-    // Scroll progress bar
+    // Scroll Progress Bar
     window.addEventListener('scroll', () => {
       const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
       const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
@@ -343,7 +554,7 @@
       document.getElementById('progress-bar').style.width = scrolled + '%';
     });
 
-    // Sticky header shadow
+    // Sticky Header Shadow
     window.addEventListener('scroll', () => {
       const header = document.getElementById('header');
       if (window.scrollY > 0) {
@@ -353,7 +564,7 @@
       }
     });
 
-    // Back to top button
+    // Back to Top Button
     const backToTopButton = document.getElementById('back-to-top');
     window.addEventListener('scroll', () => {
       if (window.scrollY > 300) {
@@ -366,12 +577,112 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    // Dark mode toggle
+    // Dark Mode Toggle
     const darkModeToggle = document.getElementById('dark-mode-toggle');
     darkModeToggle.addEventListener('click', () => {
       document.body.classList.toggle('dark-mode');
       darkModeToggle.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
     });
+
+    // Custom Cursor
+    const cursor = document.getElementById('cursor');
+    const trail1 = document.getElementById('trail1');
+    const trail2 = document.getElementById('trail2');
+    let mouseX = 0, mouseY = 0;
+
+    document.addEventListener('mousemove', e => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      cursor.style.transform = `translate(${mouseX - 10}px, ${mouseY - 10}px)`;
+      trail1.style.transform = `translate(${mouseX - 5}px, ${mouseY - 5}px)`;
+      trail2.style.transform = `translate(${mouseX - 5}px, ${mouseY - 5}px)`;
+    });
+
+    // Particle Background
+    try {
+      const canvas = document.getElementById('particles');
+      const ctx = canvas.getContext('2d');
+      let particlesArray = [];
+
+      function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = document.getElementById('home').offsetHeight;
+      }
+      resizeCanvas();
+      window.addEventListener('resize', resizeCanvas);
+
+      class Particle {
+        constructor() {
+          this.x = Math.random() * canvas.width;
+          this.y = Math.random() * canvas.height;
+          this.size = Math.random() * 4 + 1;
+          this.speedX = Math.random() * 1 - 0.5;
+          this.speedY = Math.random() * 1 - 0.5;
+        }
+        update() {
+          this.x += this.speedX;
+          this.y += this.speedY;
+          if (this.size > 0.2) this.size -= 0.02;
+          if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+          if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+        }
+        draw() {
+          ctx.fillStyle = 'rgba(59, 130, 246, 0.6)';
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+
+      function initParticles() {
+        particlesArray = [];
+        for (let i = 0; i < 30; i++) {
+          particlesArray.push(new Particle());
+        }
+      }
+      initParticles();
+
+      function animateParticles() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particlesArray.forEach(particle => {
+          particle.update();
+          particle.draw();
+          if (particle.size <= 0.2) {
+            particlesArray.splice(particlesArray.indexOf(particle), 1);
+            particlesArray.push(new Particle());
+          }
+        });
+        requestAnimationFrame(animateParticles);
+      }
+      animateParticles();
+    } catch (error) {
+      console.error('Particle animation failed:', error);
+    }
+
+    // EmailJS Contact Form
+    try {
+      emailjs.init("YOUR_USER_ID"); // Replace with your EmailJS User ID
+      document.getElementById('contactForm').addEventListener('submit', function (event) {
+        event.preventDefault();
+        emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
+          from_name: document.getElementById('name').value,
+          from_email: document.getElementById('email').value,
+          message: document.getElementById('message').value,
+        })
+        .then(
+          function (response) {
+            alert('Message sent successfully!');
+            document.getElementById('contactForm').reset();
+          },
+          function (error) {
+            alert('Failed to send message. Please try again.');
+            console.error('EmailJS error:', error);
+          }
+        );
+      });
+    } catch (error) {
+      console.error('EmailJS initialization failed:', error);
+    }
   </script>
 </body>
 </html>
