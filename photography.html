@@ -6,13 +6,19 @@
   <title>Photography | Srinjay Ghosh</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
   <style>
     body {
       font-family: 'Poppins', sans-serif;
+      margin: 0;
+      overflow-x: hidden;
     }
+    h1, h2, h3, h4 {
+      font-family: 'Montserrat', sans-serif;
+    }
+    /* Photo Item Animation */
     .photo-item {
       opacity: 0;
       transform: translateY(20px);
@@ -28,10 +34,24 @@
     .photo-img:hover {
       transform: scale(1.03);
     }
+    /* Hero Section with Gradient and Parallax */
     .hero-bg {
-      background: url('https://www.transparenttextures.com/patterns/subtle-white-feathers.png'), #dbeafe;
+      background: linear-gradient(135deg, #6b7280 0%, #3b82f6 50%, #f472b6 100%), url('https://www.transparenttextures.com/patterns/subtle-white-feathers.png');
+      background-attachment: fixed;
+      background-size: cover;
       position: relative;
       overflow: hidden;
+      z-index: 1;
+    }
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.3);
+      z-index: -1;
     }
     #particles-js {
       position: absolute;
@@ -45,20 +65,35 @@
       position: relative;
       z-index: 1;
     }
+    /* Progress Bar with Gradient */
     .progress-bar {
       position: fixed;
       top: 0;
       left: 0;
-      height: 4px;
-      background: #3b82f6;
+      height: 5px;
+      background: linear-gradient(to right, #ff6f61, #f472b6);
       width: 0%;
       z-index: 50;
       transition: width 0.3s ease;
     }
-    .nav-shadow {
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      transition: box-shadow 0.3s ease;
+    /* Navigation Link Hover Effect */
+    .nav-link {
+      position: relative;
     }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background: #f472b6;
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    /* Dark Mode Styling */
     .dark-mode {
       background: #1f2937;
       color: #e5e7eb;
@@ -88,23 +123,41 @@
       color: #60a5fa;
     }
     .dark-mode .hero-bg {
-      background: url('https://www.transparenttextures.com/patterns/subtle-white-feathers.png'), #1e3a8a;
+      background: linear-gradient(135deg, #374151 0%, #1e40af 50%, #831843 100%), url('https://www.transparenttextures.com/patterns/subtle-white-feathers.png');
     }
+    .dark-mode .timeline::before {
+      background: #60a5fa;
+    }
+    .dark-mode .timeline-item::before {
+      background: #60a5fa;
+      border-color: #1f2937;
+    }
+    .dark-mode .photo-card {
+      background: #374151;
+    }
+    .dark-mode .photo-card:hover {
+      border-image: linear-gradient(to right, #1e40af, #60a5fa) 1;
+    }
+    /* Back to Top Button with Glow */
     #back-to-top {
       position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #3b82f6;
+      bottom: 30px;
+      right: 30px;
+      background: #ff6f61;
       color: white;
-      padding: 10px 15px;
+      padding: 12px 18px;
       border-radius: 50%;
       display: none;
       z-index: 50;
-      transition: opacity 0.3s ease;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 15px rgba(255, 111, 97, 0.5);
     }
     #back-to-top:hover {
-      background: #2563eb;
+      background: #f472b6;
+      box-shadow: 0 0 20px rgba(244, 114, 182, 0.7);
+      transform: scale(1.1);
     }
+    /* Title Animation */
     .title-anim {
       opacity: 0;
       transform: scale(0.95);
@@ -114,6 +167,7 @@
       0% { opacity: 0; transform: scale(0.95); }
       100% { opacity: 1; transform: scale(1); }
     }
+    /* Timeline Styling */
     .timeline {
       position: relative;
       padding-left: 40px;
@@ -125,7 +179,7 @@
       top: 0;
       bottom: 0;
       width: 2px;
-      background: #3b82f6;
+      background: #ff6f61;
     }
     .timeline-item {
       position: relative;
@@ -138,7 +192,7 @@
       top: 10px;
       width: 16px;
       height: 16px;
-      background: #3b82f6;
+      background: #ff6f61;
       border-radius: 50%;
       border: 3px solid #ffffff;
       transition: transform 0.3s ease;
@@ -146,27 +200,40 @@
     .timeline-item:hover::before {
       transform: scale(1.2);
     }
+    /* Photo Card Styling */
     .photo-card {
-      background: white;
+      background: rgba(255, 255, 255, 0.95);
       border: 2px solid transparent;
+      border-radius: 16px;
       transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .photo-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://www.transparenttextures.com/patterns/light-wool.png');
+      opacity: 0.1;
+      z-index: -1;
     }
     .photo-card:hover {
-      border-image: linear-gradient(to right, #1e3a8a, #3b82f6) 1;
-      box-shadow: 0 10px 20px rgba(59, 130, 246, 0.2);
+      border-image: linear-gradient(to right, #ff6f61, #f472b6) 1;
+      box-shadow: 0 10px 20px rgba(244, 114, 182, 0.3);
+      transform: translateY(-5px);
     }
-    .dark-mode .photo-card {
-      background: #374151;
+    /* Glowing Button Effect */
+    .glow-btn {
+      box-shadow: 0 0 15px rgba(255, 111, 97, 0.5);
+      transition: all 0.3s ease;
     }
-    .dark-mode .timeline::before {
-      background: #60a5fa;
-    }
-    .dark-mode .timeline-item::before {
-      background: #60a5fa;
-      border-color: #1f2937;
-    }
-    .dark-mode .photo-card:hover {
-      border-image: linear-gradient(to right, #1e40af, #60a5fa) 1;
+    .glow-btn:hover {
+      box-shadow: 0 0 25px rgba(244, 114, 182, 0.7);
+      background: #f472b6;
+      color: white;
     }
   </style>
 </head>
@@ -176,13 +243,13 @@
 
   <!-- Header -->
   <header id="header" class="p-6 flex justify-between items-center bg-blue-900 text-white sticky top-0 z-40">
-    <h1 class="text-2xl font-bold">Srinjay Ghosh</h1>
+    <h1 class="text-2xl font-bold text-yellow-300">Srinjay Ghosh</h1>
     <nav class="space-x-6 text-lg font-medium">
-      <a href="index.html" class="hover:text-yellow-300 transition duration-200">Home</a>
-      <a href="photography.html" class="hover:text-yellow-300 transition duration-200">Photography</a>
-      <a href="projects.html" class="hover:text-yellow-300 transition duration-200">Projects</a>
-      <a href="internship.html" class="hover:text-yellow-300 transition duration-200">Internship</a>
-      <a href="FINALRESUME.pdf" class="hover:text-yellow-300 transition duration-200">Resume</a>
+      <a href="index.html" class="nav-link hover:text-yellow-300 transition duration-200">Home</a>
+      <a href="photography.html" class="nav-link hover:text-yellow-300 transition duration-200">Photography</a>
+      <a href="projects.html" class="nav-link hover:text-yellow-300 transition duration-200">Projects</a>
+      <a href="internship.html" class="nav-link hover:text-yellow-300 transition duration-200">Internship</a>
+      <a href="FINALRESUME.pdf" class="nav-link hover:text-yellow-300 transition duration-200">Resume</a>
       <button id="dark-mode-toggle" class="hover:text-yellow-300 transition duration-200">🌙</button>
     </nav>
   </header>
@@ -191,8 +258,8 @@
   <section class="hero-bg p-10 text-center">
     <div id="particles-js"></div>
     <div class="hero-content">
-      <h2 class="text-4xl md:text-5xl font-bold mb-4 text-blue-800 title-anim">My Clicks</h2>
-      <p id="typed-text" class="text-xl max-w-3xl mx-auto text-gray-700"></p>
+      <h2 class="text-4xl md:text-5xl font-bold mb-4 text-white title-anim">My Clicks</h2>
+      <p id="typed-text" class="text-xl max-w-3xl mx-auto text-yellow-200"></p>
     </div>
   </section>
 
@@ -277,9 +344,9 @@
 
   <!-- Footer -->
   <footer class="text-center p-6 bg-blue-900 text-white mt-10">
-    <p class="mb-2">© 2025 Srinjay Ghosh | <a href="mailto:srinjayghosh.03@gmail.com" class="underline hover:text-yellow-300">srinjayghosh.03@gmail.com</a></p>
-    <a href="index.html" class="inline-block mt-2 bg-yellow-400 text-blue-900 px-4 py-2 rounded-full font-semibold hover:bg-yellow-300 transition duration-200">
-      Home
+    <p class="mb-2 text-lg">© 2025 Srinjay Ghosh | <a href="mailto:srinjayghosh.03@gmail.com" class="underline hover:text-yellow-300">srinjayghosh.03@gmail.com</a></p>
+    <a href="index.html" class="inline-block mt-2 glow-btn bg-yellow-400 text-blue-900 px-4 py-2 rounded-full font-semibold transition duration-200">
+      ⬅ Back to Home
     </a>
   </footer>
 
@@ -303,17 +370,17 @@
     // Particles.js for hero section
     particlesJS('particles-js', {
       particles: {
-        number: { value: 50, density: { enable: true, value_area: 800 } },
-        color: { value: '#3b82f6' },
+        number: { value: 60, density: { enable: true, value_area: 800 } },
+        color: { value: '#ffffff' },
         shape: { type: 'circle' },
         opacity: { value: 0.5, random: true },
         size: { value: 3, random: true },
-        line_linked: { enable: true, distance: 150, color: '#3b82f6', opacity: 0.4, width: 1 },
-        move: { enable: true, speed: 1, direction: 'none', random: false, straight: false, out_mode: 'out', bounce: false }
+        line_linked: { enable: false },
+        move: { enable: true, speed: 1, direction: 'none', random: true }
       },
       interactivity: {
         detect_on: 'canvas',
-        events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' }, resize: true },
+        events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' } },
         modes: { repulse: { distance: 100, duration: 0.4 }, push: { particles_nb: 4 } }
       },
       retina_detect: true
