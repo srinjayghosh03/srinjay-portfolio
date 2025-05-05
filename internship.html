@@ -3,83 +3,335 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Internships - Srinjay Ghosh</title>
+  <title>Internships | Srinjay Ghosh</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
   <style>
     body {
       font-family: 'Poppins', sans-serif;
     }
-    .gradient-bg {
-      background: linear-gradient(to bottom right, #1e3a8a, #3b82f6);
+    .internship-item {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .internship-item.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .hero-bg {
+      background: url('https://www.transparenttextures.com/patterns/subtle-white-feathers.png'), #dbeafe;
+      position: relative;
+      overflow: hidden;
+    }
+    #particles-js {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 0;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+    .progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 4px;
+      background: #3b82f6;
+      width: 0%;
+      z-index: 50;
+      transition: width 0.3s ease;
+    }
+    .nav-shadow {
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: box-shadow 0.3s ease;
+    }
+    .dark-mode {
+      background: #1f2937;
+      color: #e5e7eb;
+    }
+    .dark-mode .bg-white {
+      background: #1f2937;
+    }
+    .dark-mode .bg-gray-100 {
+      background: #374151;
+    }
+    .dark-mode .text-gray-900 {
+      color: #e5e7eb;
+    }
+    .dark-mode .bg-blue-900 {
+      background: #1e40af;
+    }
+    .dark-mode .text-blue-800 {
+      color: #60a5fa;
+    }
+    .dark-mode .text-blue-700 {
+      color: #60a5fa;
+    }
+    .dark-mode .text-gray-600 {
+      color: #d1d5db;
+    }
+    .dark-mode .hero-bg {
+      background: url('https://www.transparenttextures.com/patterns/subtle-white-feathers.png'), #1e3a8a;
+    }
+    #back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #3b82f6;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 50%;
+      display: none;
+      z-index: 50;
+      transition: opacity 0.3s ease;
+    }
+    #back-to-top:hover {
+      background: #2563eb;
+    }
+    .title-anim {
+      opacity: 0;
+      transform: scale(0.95);
+      animation: titleFadeIn 1s ease forwards;
+    }
+    @keyframes titleFadeIn {
+      0% { opacity: 0; transform: scale(0.95); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+    .timeline {
+      position: relative;
+      padding-left: 40px;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 20px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: #3b82f6;
+    }
+    .timeline-item {
+      position: relative;
+      margin-bottom: 40px;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -37px;
+      top: 10px;
+      width: 16px;
+      height: 16px;
+      background: #3b82f6;
+      border-radius: 50%;
+      border: 3px solid #ffffff;
+      transition: transform 0.3s ease;
+    }
+    .timeline-item:hover::before {
+      transform: scale(1.2);
+    }
+    .internship-card {
+      background: white;
+      border: 2px solid transparent;
+      transition: all 0.3s ease;
+    }
+    .internship-card:hover {
+      border-image: linear-gradient(to right, #1e3a8a, #3b82f6) 1;
+      box-shadow: 0 10px 20px rgba(59, 130, 246, 0.2);
+    }
+    .dark-mode .internship-card {
+      background: #374151;
+    }
+    .dark-mode .timeline::before {
+      background: #60a5fa;
+    }
+    .dark-mode .timeline-item::before {
+      background: #60a5fa;
+      border-color: #1f2937;
+    }
+    .dark-mode .internship-card:hover {
+      border-image: linear-gradient(to right, #1e40af, #60a5fa) 1;
     }
   </style>
 </head>
-<body class="bg-white text-gray-900">
+<body class="bg-white text-gray-900 min-h-screen transition-colors duration-300">
+  <!-- Progress Bar -->
+  <div class="progress-bar" id="progress-bar"></div>
 
   <!-- Header -->
-  <header class="p-6 flex justify-between items-center bg-blue-900 text-white shadow-md">
+  <header id="header" class="p-6 flex justify-between items-center bg-blue-900 text-white sticky top-0 z-40">
     <h1 class="text-2xl font-bold">Srinjay Ghosh</h1>
     <nav class="space-x-6 text-lg font-medium">
-      <a href="resume.html" class="hover:text-yellow-300 transition duration-200">Resume</a>
-      <a href="certificates.html" class="hover:text-yellow-300 transition duration-200">Certificates</a>
+      <a href="index.html" class="hover:text-yellow-300 transition duration-200">Home</a>
       <a href="photography.html" class="hover:text-yellow-300 transition duration-200">Photography</a>
+      <a href="projects.html" class="hover:text-yellow-300 transition duration-200">Projects</a>
       <a href="internship.html" class="hover:text-yellow-300 transition duration-200">Internship</a>
+      <a href="FINALRESUME.pdf" class="hover:text-yellow-300 transition duration-200">Resume</a>
+      <button id="dark-mode-toggle" class="hover:text-yellow-300 transition duration-200">🌙</button>
     </nav>
   </header>
+
+  <!-- Hero Section -->
+  <section class="hero-bg p-10 text-center">
+    <div id="particles-js"></div>
+    <div class="hero-content">
+      <h2 class="text-4xl md:text-5xl font-bold mb-4 text-blue-800">My Internship Journey</h2>
+      <p id="typed-text" class="text-xl max-w-3xl mx-auto text-gray-700"></p>
+    </div>
+  </section>
 
   <!-- Internship Section -->
   <section id="internship" class="bg-gray-100 text-gray-900 py-16 px-6 md:px-20">
     <div class="max-w-5xl mx-auto space-y-12">
-      <h2 class="text-4xl font-bold text-center text-blue-800 mb-10">My Internship Experiences</h2>
+      <h2 class="text-4xl font-bold text-center text-blue-800 mb-10 title-anim">My Internship Experiences</h2>
 
-      <!-- KIIT Digital Internship -->
-      <div class="bg-white rounded-2xl shadow-lg p-8 transform hover:scale-[1.02] hover:shadow-2xl transition duration-300 ease-in-out">
-        <h3 class="text-2xl font-semibold text-blue-700 mb-4">📡 KIIT University Digital Team</h3>
-        <p class="text-lg leading-relaxed">
-          At KIIT, I had the incredible opportunity to intern with the university’s official digital media team. My role was at the crossroads of creativity and communication — handling the university’s 
-          <span class="font-semibold">social media platforms</span>, assisting with 
-          <span class="font-semibold">live event coverage</span>, and contributing to the 
-          <span class="font-semibold">university website’s design and updates</span>.
-        </p>
-        <p class="text-lg leading-relaxed mt-3">
-          I worked behind the scenes on major events, ensuring timely posts and engaging content, helping increase our reach and interaction by a significant margin. Through tools like Google Suite and CMS platforms, I helped streamline the digital workflow, wrote compelling captions, edited event photos, and assisted in 
-          <span class="font-semibold">real-time broadcasting</span> for larger campus events.
-        </p>
-        <p class="text-lg leading-relaxed mt-3 text-gray-600 italic">
-          This experience taught me how impactful clear digital storytelling can be — and how much work goes into making it seamless.
-        </p>
-      </div>
+      <div class="timeline">
+        <!-- KIIT Digital Internship -->
+        <div class="timeline-item internship-item">
+          <div class="internship-card rounded-2xl shadow-lg p-8">
+            <h3 class="text-2xl font-semibold text-blue-700 mb-4">📡 KIIT University Digital Team</h3>
+            <p class="text-lg leading-relaxed">
+              At KIIT, I had the incredible opportunity to intern with the university’s official digital media team. My role was at the crossroads of creativity and communication — handling the university’s 
+              <span class="font-semibold">social media platforms</span>, assisting with 
+              <span class="font-semibold">live event coverage</span>, and contributing to the 
+              <span class="font-semibold">university website’s design and updates</span>.
+            </p>
+            <p class="text-lg leading-relaxed mt-3">
+              I worked behind the scenes on major events, ensuring timely posts and engaging content, helping increase our reach and interaction by a significant margin. Through tools like Google Suite and CMS platforms, I helped streamline the digital workflow, wrote compelling captions, edited event photos, and assisted in 
+              <span class="font-semibold">real-time broadcasting</span> for larger campus events.
+            </p>
+            <p class="text-lg leading-relaxed mt-3 text-gray-600 italic">
+              This experience taught me how impactful clear digital storytelling can be — and how much work goes into making it seamless.
+            </p>
+          </div>
+        </div>
 
-      <!-- Shine Projects Internship -->
-      <div class="bg-white rounded-2xl shadow-lg p-8 transform hover:scale-[1.02] hover:shadow-2xl transition duration-300 ease-in-out">
-        <h3 class="text-2xl font-semibold text-blue-700 mb-4">💼 Shine Projects – Marketing Consultant Intern</h3>
-        <p class="text-lg leading-relaxed">
-          At Shine Projects, a dynamic Hyderabad-based startup, I took on the role of a Marketing Consultant Intern for two months. Here, I explored the real-world impact of strategic digital outreach. 
-          My work involved 
-          <span class="font-semibold">generating leads</span>, understanding 
-          <span class="font-semibold">customer personas</span>, and promoting career-oriented courses through a combination of 
-          <span class="font-semibold">email marketing, LinkedIn campaigns</span>, and 
-          <span class="font-semibold">cold outreach strategies</span>.
-        </p>
-        <p class="text-lg leading-relaxed mt-3">
-          I contributed to expanding our active user base by using creative messaging and tailored communications. I also assisted in data collection and analysis to help refine targeting and improve conversions — gaining insights into what truly drives engagement in the digital learning space.
-        </p>
-        <p class="text-lg leading-relaxed mt-3 text-gray-600 italic">
-          This internship sharpened my marketing instincts and taught me the power of customer-centric design in campaigns.
-        </p>
+        <!-- Shine Projects Internship -->
+        <div class="timeline-item internship-item">
+          <div class="internship-card rounded-2xl shadow-lg p-8">
+            <h3 class="text-2xl font-semibold text-blue-700 mb-4">💼 Shine Projects – Marketing Consultant Intern</h3>
+            <p class="text-lg leading-relaxed">
+              At Shine Projects, a dynamic Hyderabad-based startup, I took on the role of a Marketing Consultant Intern for two months. Here, I explored the real-world impact of strategic digital outreach. 
+              My work involved 
+              <span class="font-semibold">generating leads</span>, understanding 
+              <span class="font-semibold">customer personas</span>, and promoting career-oriented courses through a combination of 
+              <span class="font-semibold">email marketing, LinkedIn campaigns</span>, and 
+              <span class="font-semibold">cold outreach strategies</span>.
+            </p>
+            <p class="text-lg leading-relaxed mt-3">
+              I contributed to expanding our active user base by using creative messaging and tailored communications. I also assisted in data collection and analysis to help refine targeting and improve conversions — gaining insights into what truly drives engagement in the digital learning space.
+            </p>
+            <p class="text-lg leading-relaxed mt-3 text-gray-600 italic">
+              This internship sharpened my marketing instincts and taught me the power of customer-centric design in campaigns.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Footer -->
   <footer class="text-center p-6 bg-blue-900 text-white mt-10">
-    <p class="mb-2">&copy; 2025 Srinjay Ghosh | <a href="mailto:srinjayghosh.03@gmail.com" class="underline hover:text-yellow-300">srinjayghosh.03@gmail.com</a></p>
+    <p class="mb-2">© 2025 Srinjay Ghosh | <a href="mailto:srinjayghosh.03@gmail.com" class="underline hover:text-yellow-300">srinjayghosh.03@gmail.com</a></p>
     <a href="index.html" class="inline-block mt-2 bg-yellow-400 text-blue-900 px-4 py-2 rounded-full font-semibold hover:bg-yellow-300 transition duration-200">
       ⬅ Back to Home
     </a>
   </footer>
 
+  <!-- Back to Top Button -->
+  <button id="back-to-top" class="text-sm">⬆</button>
+
+  <!-- JavaScript for Interactivity -->
+  <script>
+    // Typing animation for hero section
+    const typed = new Typed('#typed-text', {
+      strings: [
+        'A journey through my professional growth.',
+        'Embracing real-world challenges with creativity.'
+      ],
+      typeSpeed: 50,
+      backSpeed: 30,
+      backDelay: 1000,
+      loop: true
+    });
+
+    // Particles.js for hero section
+    particlesJS('particles-js', {
+      particles: {
+        number: { value: 80, density: { enable: true, value_area: 800 } },
+        color: { value: '#3b82f6' },
+        shape: { type: 'circle' },
+        opacity: { value: 0.5, random: true },
+        size: { value: 3, random: true },
+        line_linked: { enable: true, distance: 150, color: '#3b82f6', opacity: 0.4, width: 1 },
+        move: { enable: true, speed: 2, direction: 'none', random: false, straight: false, out_mode: 'out', bounce: false }
+      },
+      interactivity: {
+        detect_on: 'canvas',
+        events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' }, resize: true },
+        modes: { repulse: { distance: 100, duration: 0.4 }, push: { particles_nb: 4 } }
+      },
+      retina_detect: true
+    });
+
+    // Scroll animations for internship items
+    document.addEventListener('DOMContentLoaded', () => {
+      const items = document.querySelectorAll('.internship-item');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1 });
+
+      items.forEach(item => observer.observe(item));
+    });
+
+    // Scroll progress bar
+    window.addEventListener('scroll', () => {
+      const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      document.getElementById('progress-bar').style.width = scrolled + '%';
+    });
+
+    // Sticky header shadow
+    window.addEventListener('scroll', () => {
+      const header = document.getElementById('header');
+      if (window.scrollY > 0) {
+        header.classList.add('nav-shadow');
+      } else {
+        header.classList.remove('nav-shadow');
+      }
+    });
+
+    // Back to top button
+    const backToTopButton = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTopButton.style.display = 'block';
+      } else {
+        backToTopButton.style.display = 'none';
+      }
+    });
+    backToTopButton.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Dark mode toggle
+    const darkModeToggle = document.getElementById('dark-mode-toggle');
+    darkModeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      darkModeToggle.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+    });
+  </script>
 </body>
 </html>
