@@ -6,88 +6,248 @@
   <title>Srinjay Ghosh | Portfolio</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body {
       font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: #e2e8f0;
     }
-    .gradient-bg {
-      background: linear-gradient(to bottom right, #1e3a8a, #3b82f6);
+    .section-border {
+      border: 2px solid #3b82f6;
+      border-radius: 12px;
+      padding: 20px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .section-border:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+    }
+    .certificate-card {
+      transition: all 0.3s ease;
+    }
+    .certificate-card:hover {
+      background-color: #1e293b;
+      transform: scale(1.02);
+    }
+    .hidden-section {
+      display: none;
+    }
+    .fade-in {
+      animation: fadeIn 1s ease-in-out forwards;
+    }
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .btn-glow {
+      box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+      transition: box-shadow 0.3s ease;
+    }
+    .btn-glow:hover {
+      box-shadow: 0 0 25px rgba(59, 130, 246, 0.8);
     }
   </style>
 </head>
-<body class="text-white gradient-bg min-h-screen">
-  <!-- Header -->
-  <header class="p-6 flex justify-between items-center bg-opacity-20 backdrop-blur-lg shadow-md">
-    <h1 class="text-3xl font-bold">Srinjay Ghosh</h1>
-    <nav class="space-x-6 text-lg font-medium">
-      <a href="index.html" class="hover:text-yellow-300 transition duration-200">Home</a>
-      <a href="photography.html" class="hover:text-yellow-300 transition duration-200">Photography</a>
-      <a href="projects.html" class="hover:text-yellow-300 transition duration-200">Projects</a>
-      <a href="internship.html" class="hover:text-yellow-300 transition duration-200">Internship</a>
-    </nav>
-  </header>
+<body class="min-h-screen">
+  <!-- Initial Click to Open Screen -->
+  <div id="intro-screen" class="fixed inset-0 flex items-center justify-center bg-gradient-to-br from-slate-900 to-blue-900 z-50">
+    <button id="open-portfolio" class="px-8 py-4 bg-blue-600 text-white text-xl font-semibold rounded-full btn-glow hover:bg-blue-700 transition duration-300">
+      Click to Open Portfolio
+    </button>
+  </div>
 
-  <!-- Hero Section -->
-  <section class="p-10 text-center">
-    <h2 class="text-4xl md:text-5xl font-bold mb-4">Srinjay Ghosh</h2>
-    <p class="text-xl max-w-3xl mx-auto">Programmer. Photographer. Explorer. A B.Tech student at KIIT, blending code, creativity, and curiosity to build meaningful digital experiences.</p>
-  </section>
+  <!-- Main Portfolio Content -->
+  <div id="portfolio-content" class="hidden-section">
+    <!-- Header -->
+    <header class="p-6 flex justify-between items-center bg-opacity-20 backdrop-blur-lg shadow-md sticky top-0 z-40">
+      <h1 class="text-3xl font-bold text-yellow-300">Srinjay Ghosh</h1>
+      <nav class="space-x-6 text-lg font-medium">
+        <a href="index.html" class="hover:text-yellow-300 transition duration-200">Home</a>
+        <a href="photography.html" class="hover:text-yellow-300 transition duration-200">Photography</a>
+        <a href="projects.html" class="hover:text-yellow-300 transition duration-200">Projects</a>
+        <a href="internship.html" class="hover:text-yellow-300 transition duration-200">Internship</a>
+      </nav>
+    </header>
 
-  <!-- Discover Me Section -->
-  <section class="bg-white text-gray-800 rounded-t-3xl p-10 md:p-16 shadow-2xl">
-    <div class="max-w-5xl mx-auto space-y-8">
-      <div id="resume">
-        <h3 class="text-3xl font-semibold text-blue-600 mb-2">Who Am I?</h3>
-        <p class="text-lg leading-relaxed">
-          I’m a fourth-year B.Tech student at KIIT with a passion for programming, web development, and building digital experiences that matter. I specialize in Python, Java, and full-stack web development, creating clean, intuitive, and dynamic applications.
-        </p>
+    <!-- Hero Section -->
+    <section class="p-10 text-center">
+      <h2 class="text-5xl md:text-6xl font-bold mb-4 text-yellow-300">Srinjay Ghosh</h2>
+      <p class="text-xl max-w-3xl mx-auto text-slate-300">Programmer. Photographer. Explorer. A B.Tech student at KIIT, blending code, creativity, and curiosity to build meaningful digital experiences.</p>
+    </section>
+
+    <!-- Discover Me Section -->
+    <section class="bg-slate-800 rounded-t-3xl p-10 md:p-16 shadow-2xl">
+      <div class="max-w-5xl mx-auto space-y-12">
+        <div id="resume" class="section-border">
+          <h3 class="text-3xl font-semibold text-yellow-300 mb-2">Who Am I?</h3>
+          <p class="text-lg leading-relaxed text-slate-300">
+            I’m a fourth-year B.Tech student at KIIT with a passion for programming, web development, and building digital experiences that matter. I specialize in Python, Java, and full-stack web development, creating clean, intuitive, and dynamic applications.
+          </p>
+        </div>
+
+        <div id="internship" class="section-border">
+          <h3 class="text-3xl font-semibold text-yellow-300 mb-2">My Journey Through Code</h3>
+          <p class="text-lg leading-relaxed text-slate-300">
+            From interning at my university’s digital team to consulting at Shine Projects, my experience spans digital media, marketing, and development. I thrive where logic meets design, using code to communicate, solve, and inspire.
+          </p>
+        </div>
+
+        <div id="photography" class="section-border">
+          <h3 class="text-3xl font-semibold text-yellow-300 mb-2">A Lens on the World</h3>
+          <p class="text-lg leading-relaxed text-slate-300">
+            Photography is my way of freezing time. From sunrises in the mountains to vibrant city streets, I capture the world as I see it—vivid, emotional, and alive. My camera is my second language, expressing what words often can’t.
+          </p>
+        </div>
+
+        <div class="section-border">
+          <h3 class="text-3xl font-semibold text-yellow-300 mb-2">Why I Travel</h3>
+          <p class="text-lg leading-relaxed text-slate-300">
+            Travel is more than a passion—it’s my purpose. It grounds me, inspires me, and fuels my creativity. Mountains, especially, are my soul’s home. One day, I dream of building tech remotely from a cabin in the hills.
+          </p>
+        </div>
+
+        <div class="section-border">
+          <h3 class="text-3xl font-semibold text-yellow-300 mb-2">Vision Forward</h3>
+          <p class="text-lg leading-relaxed text-slate-300">
+            I’m working toward a future where I can bridge technology, design, and storytelling. Whether it’s a startup, a digital agency, or my own venture—I aim to create meaningful digital experiences that help people connect, discover, and dream.
+          </p>
+        </div>
+
+        <!-- Certificates Section with Click to Expand -->
+        <div id="certificates" class="section-border">
+          <h3 class="text-3xl font-semibold text-yellow-300 mb-4 cursor-pointer" onclick="toggleCertificates()">Certificates <span id="toggle-icon" class="inline-block ml-2">▼</span></h3>
+          <div id="certificates-list" class="space-y-6 hidden">
+            <!-- Certificate 1 -->
+            <div class="certificate-card bg-slate-700 rounded-lg p-4">
+              <img src="<!-- Replace with URL or base64 of Certificate 1 -->" alt="Project Management Skills for Leaders Certificate" class="w-full h-auto rounded-lg mb-4">
+              <h4 class="text-xl font-semibold text-yellow-300 mb-2">Project Management Skills for Leaders</h4>
+              <p class="text-slate-300 mb-2">Completed on May 14, 2024 at 06:57 AM UTC</p>
+              <p class="text-slate-300 mb-2"><strong>Issuer:</strong> LinkedIn Learning</p>
+              <p class="text-slate-300 mb-2"><strong>Skills Covered:</strong> Project Management, Project Leadership</p>
+              <p class="text-slate-300 mb-2"><strong>Details:</strong> A course recognized by the Project Management Institute (PMI) with an activity ID #41031EVY and 0.50 PDUs/contact hours.</p>
+            </div>
+
+            <!-- Certificate 2 -->
+            <div class="certificate-card bg-slate-700 rounded-lg p-4">
+              <img src="<!-- Replace with URL or base64 of Certificate 2 -->" alt="Online Marketing Internship Certificate" class="w-full h-auto rounded-lg mb-4">
+              <h4 class="text-xl font-semibold text-yellow-300 mb-2">Online Marketing Internship</h4>
+              <p class="text-slate-300 mb-2">Completed on May 21, 2024</p>
+              <p class="text-slate-300 mb-2"><strong>Issuer:</strong> Internshala, in collaboration with KIIT University, Bhubaneswar</p>
+              <p class="text-slate-300 mb-2"><strong>Details:</strong> Successfully secured an online marketing internship at Anjor Foundation Trust through Internshala.</p>
+            </div>
+
+            <!-- Certificate 3 -->
+            <div class="certificate-card bg-slate-700 rounded-lg p-4">
+              <img src="<!-- Replace with URL or base64 of Certificate 3 -->" alt="Premiere Pro Essential Training Certificate" class="w-full h-auto rounded-lg mb-4">
+              <h4 class="text-xl font-semibold text-yellow-300 mb-2">Premiere Pro Essential Training (2022-2024)</h4>
+              <p class="text-slate-300 mb-2">Completed on May 14, 2024 at 11:22 AM UTC (6 hours 38 minutes)</p>
+              <p class="text-slate-300 mb-2"><strong>Issuer:</strong> LinkedIn Learning</p>
+              <p class="text-slate-300 mb-2"><strong>Skills Covered:</strong> Adobe Premiere Pro</p>
+              <p class="text-slate-300 mb-2"><strong>Details:</strong> A comprehensive training course focused on mastering Adobe Premiere Pro for video editing.</p>
+            </div>
+
+            <!-- Certificate 4 -->
+            <div class="certificate-card bg-slate-700 rounded-lg p-4">
+              <img src="<!-- Replace with URL or base64 of Certificate 4 -->" alt="Financial Markets Training Certificate" class="w-full h-auto rounded-lg mb-4">
+              <h4 class="text-xl font-semibold text-yellow-300 mb-2">Financial Markets Training</h4>
+              <p class="text-slate-300 mb-2">Completed on June 15, 2024</p>
+              <p class="text-slate-300 mb-2"><strong>Issuer:</strong> Shine Projects</p>
+              <p class="text-slate-300 mb-2"><strong>Skills Covered:</strong> Share Markets, Mutual Funds, Insurance, Banking Concepts</p>
+              <p class="text-slate-300 mb-2"><strong>Details:</strong> A training course on financial markets, providing expertise in key financial concepts and practices.</p>
+            </div>
+
+            <!-- Certificate 5 -->
+            <div class="certificate-card bg-slate-700 rounded-lg p-4">
+              <img src="<!-- Replace with URL or base64 of Certificate 5 -->" alt="Health Systems Development: Introduction to Health Systems Certificate" class="w-full h-auto rounded-lg mb-4">
+              <h4 class="text-xl font-semibold text-yellow-300 mb-2">Health Systems Development: Introduction to Health Systems</h4>
+              <p class="text-slate-300 mb-2">Completed on January 1, 2025</p>
+              <p class="text-slate-300 mb-2"><strong>Issuer:</strong> Imperial College London, offered through Coursera</p>
+              <p class="text-slate-300 mb-2"><strong>Details:</strong> An online non-credit course introducing the fundamentals of health systems development.</p>
+              <p class="text-slate-300 mb-2"><strong>Verification:</strong> <a href="https://coursera.org/verify/WJ3NMBRWFVY" class="text-blue-500 hover:underline">Verify Certificate</a></p>
+            </div>
+
+            <!-- Certificate 6 -->
+            <div class="certificate-card bg-slate-700 rounded-lg p-4">
+              <img src="<!-- Replace with URL or base64 of Certificate 6 -->" alt="Advance Your After Effects Skills Certificate" class="w-full h-auto rounded-lg mb-4">
+              <h4 class="text-xl font-semibold text-yellow-300 mb-2">Advance Your After Effects Skills</h4>
+              <p class="text-slate-300 mb-2">Completed on May 27, 2024 at 07:20 PM UTC (18 hours 50 minutes)</p>
+              <p class="text-slate-300 mb-2"><strong>Issuer:</strong> LinkedIn Learning</p>
+              <p class="text-slate-300 mb-2"><strong>Skills Covered:</strong> After Effects</p>
+              <p class="text-slate-300 mb-2"><strong>Details:</strong> A learning path focused on advanced techniques in Adobe After Effects for motion graphics and visual effects.</p>
+            </div>
+
+            <!-- Certificate 7 -->
+            <div class="certificate-card bg-slate-700 rounded-lg p-4">
+              <img src="<!-- Replace with URL or base64 of Certificate 7 -->" alt="Health Systems Development: Health Systems, Policy and Research Certificate" class="w-full h-auto rounded-lg mb-4">
+              <h4 class="text-xl font-semibold text-yellow-300 mb-2">Health Systems Development: Health Systems, Policy and Research</h4>
+              <p class="text-slate-300 mb-2">Completed on January 7, 2025</p>
+              <p class="text-slate-300 mb-2"><strong>Issuer:</strong> Imperial College London, offered through Coursera</p>
+              <p class="text-slate-300 mb-2"><strong>Details:</strong> An online non-credit course exploring health systems, policy, and research methodologies.</p>
+              <p class="text-slate-300 mb-2"><strong>Verification:</strong> <a href="https://coursera.org/verify/WGHTT6C" class="text-blue-500 hover:underline">Verify Certificate</a></p>
+            </div>
+
+            <!-- Certificate 8 -->
+            <div class="certificate-card bg-slate-700 rounded-lg p-4">
+              <img src="<!-- Replace with URL or base64 of Certificate 8 -->" alt="INNOWAVE 2.0 Certificate of Appreciation" class="w-full h-auto rounded-lg mb-4">
+              <h4 class="text-xl font-semibold text-yellow-300 mb-2">Certificate of Appreciation - INNOWAVE 2.0</h4>
+              <p class="text-slate-300 mb-2">Awarded on January 18, 2025</p>
+              <p class="text-slate-300 mb-2"><strong>Issuer:</strong> Team Broadcasting, INNOWAVE 2.0, KIIT University, Bhubaneswar</p>
+              <p class="text-slate-300 mb-2"><strong>Details:</strong> Recognized for dedication and contributions as an organizing committee member during INNOWAVE 2.0, an event focused on innovation.</p>
+            </div>
+
+            <!-- Certificate 9 -->
+            <div class="certificate-card bg-slate-700 rounded-lg p-4">
+              <img src="<!-- Replace with URL or base64 of Certificate 9 -->" alt="TEDxKIITUniversity Certificate of Acknowledgement" class="w-full h-auto rounded-lg mb-4">
+              <h4 class="text-xl font-semibold text-yellow-300 mb-2">Certificate of Acknowledgement - TEDxKIITUniversity</h4>
+              <p class="text-slate-300 mb-2">Awarded on August 10, 2024</p>
+              <p class="text-slate-300 mb-2"><strong>Issuer:</strong> TEDxKIITUniversity, Kalinga Institute of Industrial Technology, Bhubaneswar</p>
+              <p class="text-slate-300 mb-2"><strong>Details:</strong> Acknowledged for participation in the eighth edition of the TEDx conference themed "Pharos - The Guiding Light," focusing on innovation and ideas.</p>
+            </div>
+
+            <!-- Certificate 10 -->
+            <div class="certificate-card bg-slate-700 rounded-lg p-4">
+              <img src="<!-- Replace with URL or base64 of Certificate 10 -->" alt="KIIT FEST 8.0 Certificate of Appreciation" class="w-full h-auto rounded-lg mb-4">
+              <h4 class="text-xl font-semibold text-yellow-300 mb-2">Certificate of Appreciation - KIIT FEST 8.0</h4>
+              <p class="text-slate-300 mb-2">Awarded on February 14-16, 2025</p>
+              <p class="text-slate-300 mb-2"><strong>Issuer:</strong> KIIT Deemed to be University, Bhubaneswar</p>
+              <p class="text-slate-300 mb-2"><strong>Details:</strong> Recognized for exceptional dedication and contributions as a vital member of the organizing committee for KIIT FEST 8.0, a major university event.</p>
+            </div>
+          </div>
+        </div>
       </div>
+    </section>
 
-      <div id="internship">
-        <h3 class="text-3xl font-semibold text-blue-600 mb-2">My Journey Through Code</h3>
-        <p class="text-lg leading-relaxed">
-          From interning at my university’s digital team to consulting at Shine Projects, my experience spans digital media, marketing, and development. I thrive where logic meets design, using code to communicate, solve, and inspire.
-        </p>
-      </div>
+    <!-- Footer -->
+    <footer class="text-center p-6 text-sm bg-opacity-10 backdrop-blur-md">
+      <p>© 2025 Srinjay Ghosh | <a href="mailto:srinjayghosh.03@gmail.com" class="underline hover:text-yellow-300">srinjayghosh.03@gmail.com</a></p>
+      <a href="about.html" class="inline-block mt-4 px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 btn-glow transition duration-200">Know About Me</a>
+    </footer>
+  </div>
 
-      <div id="photography">
-        <h3 class="text-3xl font-semibold text-blue-600 mb-2">A Lens on the World</h3>
-        <p class="text-lg leading-relaxed">
-          Photography is my way of freezing time. From sunrises in the mountains to vibrant city streets, I capture the world as I see it—vivid, emotional, and alive. My camera is my second language, expressing what words often can’t.
-        </p>
-      </div>
+  <!-- JavaScript for Interactivity -->
+  <script>
+    // Show portfolio content on button click
+    document.getElementById('open-portfolio').addEventListener('click', () => {
+      document.getElementById('intro-screen').style.display = 'none';
+      const portfolioContent = document.getElementById('portfolio-content');
+      portfolioContent.classList.remove('hidden-section');
+      portfolioContent.classList.add('fade-in');
+    });
 
-      <div>
-        <h3 class="text-3xl font-semibold text-blue-600 mb-2">Why I Travel</h3>
-        <p class="text-lg leading-relaxed">
-          Travel is more than a passion—it’s my purpose. It grounds me, inspires me, and fuels my creativity. Mountains, especially, are my soul’s home. One day, I dream of building tech remotely from a cabin in the hills.
-        </p>
-      </div>
-
-      <div>
-        <h3 class="text-3xl font-semibold text-blue-600 mb-2">Vision Forward</h3>
-        <p class="text-lg leading-relaxed">
-          I’m working toward a future where I can bridge technology, design, and storytelling. Whether it’s a startup, a digital agency, or my own venture—I aim to create meaningful digital experiences that help people connect, discover, and dream.
-        </p>
-      </div>
-
-      <div id="certificates">
-        <h3 class="text-3xl font-semibold text-blue-600 mb-2">Certificates</h3>
-        <ul class="text-lg leading-relaxed list-disc pl-5">
-          <li>Web Development - Udemy (HTML, CSS)</li>
-          <li>KIIT Digital Intern, Videographer & Social Media, 2023-2024</li>
-          <li>Shine Projects Online Consultant, Apr-May 2024</li>
-          <li>Health Systems Development - Coursera</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="text-center p-6 text-sm bg-opacity-10 backdrop-blur-md">
-    <p>© 2025 Srinjay Ghosh | <a href="mailto:srinjayghosh.03@gmail.com" class="underline hover:text-yellow-300">srinjayghosh.03@gmail.com</a></p>
-    <a href="about.html" class="inline-block mt-4 px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-200">Know About Me</a>
-  </footer>
+    // Toggle certificates section
+    function toggleCertificates() {
+      const certificatesList = document.getElementById('certificates-list');
+      const toggleIcon = document.getElementById('toggle-icon');
+      if (certificatesList.classList.contains('hidden')) {
+        certificatesList.classList.remove('hidden');
+        certificatesList.classList.add('fade-in');
+        toggleIcon.textContent = '▲';
+      } else {
+        certificatesList.classList.add('hidden');
+        toggleIcon.textContent = '▼';
+      }
+    }
+  </script>
 </body>
 </html>
